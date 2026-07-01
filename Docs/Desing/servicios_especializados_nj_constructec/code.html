@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servicios Especializados | NJ CONSTRUCTEC</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#ffb95f",
+                    "outline-variant": "#c1c7d1",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d9e3f7",
+                    "on-primary-fixed-variant": "#00497b",
+                    "surface-container-low": "#eff3ff",
+                    "on-background": "#121c2a",
+                    "secondary-container": "#fcae45",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface": "#f9f9ff",
+                    "primary-fixed": "#d0e4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#9a6c00",
+                    "on-error": "#ffffff",
+                    "blueprint-bg": "#F3F4F6",
+                    "secondary": "#855300",
+                    "on-primary-container": "#fdfcff",
+                    "off-white": "#F9FAFB",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#18629c",
+                    "background": "#f9f9ff",
+                    "primary-container": "#3878b4",
+                    "surface-bright": "#f9f9ff",
+                    "tertiary": "#7a5500",
+                    "on-secondary-fixed": "#2a1700",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdeab",
+                    "surface-container": "#e6eeff",
+                    "on-surface-variant": "#414750",
+                    "surface-dim": "#d0daef",
+                    "on-secondary-container": "#6e4400",
+                    "border-gray": "#E5E7EB",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "inverse-primary": "#9ccaff",
+                    "tertiary-fixed-dim": "#f7bd55",
+                    "secondary-fixed": "#ffddb8",
+                    "on-surface": "#121c2a",
+                    "on-error-container": "#93000a",
+                    "slate-gray": "#1F2937",
+                    "surface-container-high": "#dee9fd",
+                    "on-tertiary-fixed": "#271900",
+                    "outline": "#717781",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#fffbff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001d35",
+                    "primary": "#135f99",
+                    "surface-container-highest": "#d9e3f7",
+                    "primary-fixed-dim": "#9ccaff",
+                    "inverse-surface": "#273140",
+                    "inverse-on-surface": "#ebf1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-item {
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        .technical-sidebar {
+            background: #f9f9ff;
+            border-left: 4px solid #135f99;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-gray transition-all duration-200 ease-in-out">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-slate-gray">NJ CONSTRUCTEC</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Insights</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-bold hover:bg-primary-container transition-all">Get a Quote</button>
+</nav>
+<button class="md:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="pt-24 pb-20">
+<!-- Hero Section -->
+<section class="relative bg-slate-gray py-20 mb-16 overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute inset-0" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-desktop w-full text-off-white">
+<span class="font-label-bold text-label-bold text-secondary-fixed-dim mb-2 block uppercase tracking-widest">Excelencia en Ingeniería</span>
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-headline-lg-mobile max-w-3xl mb-6 leading-tight">Servicios de Construcción e Instalación Especializada</h1>
+<p class="font-body-lg text-body-lg text-surface-variant max-w-2xl">Más de 18 años ejecutando soluciones técnicas de alta complejidad con cumplimiento estricto de normativas peruanas e internacionales.</p>
+</div>
+</section>
+<div class="max-w-container-max mx-auto px-margin-desktop space-y-32">
+<!-- 1. Instalaciones Sanitarias -->
+<section class="scroll-mt-24" id="sanitarias">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-gray pb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-primary flex items-center justify-center rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-3xl">plumbing</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-slate-gray">1. Instalaciones Sanitarias</h2>
+<p class="text-on-surface-variant font-body-sm uppercase tracking-wider">Expertos en Edificaciones Residenciales y Comerciales</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-lg font-label-bold hover:shadow-xl transition-all" href="#">
+<span class="material-symbols-outlined">picture_as_pdf</span> Descargar Brochure Sanitarias
+                </a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Sub-categories (Bento Style) -->
+<div class="bento-item service-card hover:border-primary/50 shadow-sm">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-xl">new_releases</span> Instalaciones Nuevas</h3>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-primary">•</span> Diseño de redes de agua fría y caliente.</li>
+<li class="flex gap-2"><span class="text-primary">•</span> Redes de desagüe y ventilación.</li>
+<li class="flex gap-2"><span class="text-primary">•</span> Tendido de tuberías PPR, PVC, CPVC, HDPE.</li>
+<li class="flex gap-2"><span class="text-primary">•</span> Cajas de registro y cámaras de inspección.</li>
+</ul>
+</div>
+<div class="bento-item service-card hover:border-primary/50 shadow-sm">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-xl">build</span> Reparaciones</h3>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-error">•</span> Detección y reparación de fugas críticas.</li>
+<li class="flex gap-2"><span class="text-error">•</span> Sustitución de tramos corroídos.</li>
+<li class="flex gap-2"><span class="text-error">•</span> Cambio de grifería, válvulas y sifones.</li>
+<li class="flex gap-2"><span class="text-error">•</span> Corrección de ejecuciones previas.</li>
+</ul>
+</div>
+<div class="bento-item service-card hover:border-primary/50 shadow-sm">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-xl">architecture</span> Modificaciones</h3>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-secondary">•</span> Reubicación de puntos sanitarios.</li>
+<li class="flex gap-2"><span class="text-secondary">•</span> Ampliación para nuevos baños/cocinas.</li>
+<li class="flex gap-2"><span class="text-secondary">•</span> Readecuación para presión y caudal.</li>
+</ul>
+</div>
+<div class="bento-item service-card hover:border-primary/50 shadow-sm">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-xl">bathtub</span> Instalación de Aparatos</h3>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-primary">•</span> Conexión de inodoros, duchas y urinarios.</li>
+<li class="flex gap-2"><span class="text-primary">•</span> Instalación de termas (eléctricas/gas).</li>
+<li class="flex gap-2"><span class="text-primary">•</span> Lavadoras y tanques elevados.</li>
+</ul>
+</div>
+<div class="bento-item service-card hover:border-primary/50 shadow-sm">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-xl">health_and_safety</span> Mantenimiento</h3>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-primary-container">•</span> Desinfección de tanques y cisternas.</li>
+<li class="flex gap-2"><span class="text-primary-container">•</span> Limpieza de ductos verticales.</li>
+<li class="flex gap-2"><span class="text-primary-container">•</span> Mantenimiento programado de redes.</li>
+</ul>
+</div>
+<div class="bento-item service-card hover:border-primary/50 shadow-sm bg-surface-container-low border-primary/20">
+<h3 class="font-headline-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-xl">emergency</span> Emergencias</h3>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li class="flex gap-2"><span class="text-error font-bold">•</span> Atención inmediata a reboses.</li>
+<li class="flex gap-2"><span class="text-error font-bold">•</span> Desatoro con presión de agua.</li>
+<li class="flex gap-2"><span class="text-error font-bold">•</span> Rehabilitación rápida de instalaciones.</li>
+</ul>
+</div>
+</div>
+<!-- Sidebar Technical Specs -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="technical-sidebar p-6 rounded-lg">
+<h4 class="font-label-bold text-slate-gray flex items-center gap-2 mb-4 uppercase tracking-wider">
+<span class="material-symbols-outlined text-primary">verified</span> Especificaciones Técnicas
+                        </h4>
+<div class="space-y-4 text-body-sm text-on-surface-variant">
+<p class="border-b border-gray pb-2">Normativa: <strong class="text-slate-gray">RNE IS.010</strong></p>
+<p class="border-b border-gray pb-2">Materiales: <strong class="text-slate-gray">Certificación ISO 9001</strong></p>
+<p class="border-b border-gray pb-2">Garantía: <strong class="text-slate-gray">24 Meses en Instalación</strong></p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden border border-gray shadow-md">
+<img alt="Sanitary Installation" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvz7N62ZQPwo8puniByS0LktZKFwA7VAvwjJirgrRsajzyBiqQUR8FN4GAKknd7sdSttWo0pOyt9mFe8j0E-Df_cQsiAGE0cjxMDWXXN60rzrysRbmi5AmY97Qd6AB8Pz6yOnbSM0TTCAZaChg97hUeXFGjt-c3fixZMt6p4_kEz1FjPG8xcrJVEglvhhxkTTGUvsmlA4CEPE557g-42L3JBwa39ClMffMEAz-BzP34WHmGS_JS3OEsxWH3-9kfx60AWcERWe0cLY4"/>
+</div>
+</aside>
+</div>
+</section>
+<!-- 2. Instalaciones Eléctricas -->
+<section class="scroll-mt-24" id="electricas">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-gray pb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-secondary flex items-center justify-center rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-on-secondary text-3xl">electrical_services</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-slate-gray">2. Instalaciones Eléctricas</h2>
+<p class="text-on-surface-variant font-body-sm uppercase tracking-wider">Seguridad y Respaldo Energético Certificado</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-on-secondary rounded-lg font-label-bold hover:shadow-xl transition-all" href="#">
+<span class="material-symbols-outlined">picture_as_pdf</span> Brochure Eléctrico
+                </a>
+</div>
+<div class="bg-white border border-gray rounded-xl overflow-hidden shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12">
+<div class="lg:col-span-8 p-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="space-y-4">
+<h4 class="font-label-bold text-primary uppercase">Infraestructura Base</h4>
+<ul class="space-y-3 text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Diseño y ejecución integral.</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Tableros y centros de carga.</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Cableado para viviendas y oficinas.</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Puesta a tierra y protección.</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-bold text-primary uppercase">Sistemas Avanzados</h4>
+<ul class="space-y-3 text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Energía de emergencia (UPS/Grupos).</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Detección y reparación de fallas.</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">bolt</span> Iluminación técnica int/ext.</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-base">verified</span> Certificación técnica oficial.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 bg-slate-gray relative min-h-[300px]">
+<img alt="Electrical Panel" class="w-full h-full object-cover absolute inset-0 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDor9mRPqZOSDl7nP4m3n2IAycBKjifaxbk3jPjXe6G7mjCzLpOf_vIZqOhgk3hf4eeeEwHd1XtWu0SiyqREtBOpCqAAS4TZf3Rxhl0YIkVsre7ZX37wrrW5dhFNymOIXz2kca9naCiasKAq-IEpbY8yBSZOrV5-jTZGabTVocKozhRBogmmvg0BMRKjSdxe9f5BpQYDy4ZK3ByyonpVQfBZ42VwmENlPyNcc3LzV2PANOhsGKhnetNyU76ybfGgegS2A49OmCFdftE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-gray to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<span class="text-off-white font-label-bold block mb-2">Protocolos de Seguridad</span>
+<p class="text-surface-variant text-xs">Cumplimiento estricto del Código Nacional de Electricidad (CNE-Utilización).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Equipos de Bombeo -->
+<section class="scroll-mt-24" id="bombeo">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-gray pb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-3xl">water_pump</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-slate-gray">3. Equipos de Bombeo</h2>
+<p class="text-on-surface-variant font-body-sm uppercase tracking-wider">Automatización e Ingeniería Hidráulica</p>
+</div>
+</div>
+<button class="px-6 py-3 border-2 border-primary text-primary rounded-lg font-label-bold hover:bg-primary hover:text-white transition-all">Ficha de Equipos</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bento-item flex flex-col items-center text-center p-8">
+<span class="material-symbols-outlined text-5xl text-primary mb-4">settings_input_antenna</span>
+<h3 class="font-headline-md text-slate-gray mb-3">Sistemas de Presión Constante</h3>
+<p class="text-body-sm text-on-surface-variant">Variadores de frecuencia para un suministro eficiente y estable en toda la edificación.</p>
+</div>
+<div class="bento-item flex flex-col items-center text-center p-8">
+<span class="material-symbols-outlined text-5xl text-primary mb-4">precision_manufacturing</span>
+<h3 class="font-headline-md text-slate-gray mb-3">Montaje Especializado</h3>
+<p class="text-body-sm text-on-surface-variant">Instalación de bombas centrífugas, sumergibles y electrobombas para cisternas.</p>
+</div>
+<div class="bento-item flex flex-col items-center text-center p-8">
+<span class="material-symbols-outlined text-5xl text-primary mb-4">analytics</span>
+<h3 class="font-headline-md text-slate-gray mb-3">Automatización y Control</h3>
+<p class="text-body-sm text-on-surface-variant">Tableros de control con protecciones térmicas y de falta de fase integradas.</p>
+</div>
+<div class="md:col-span-3 bg-surface-container p-6 rounded-lg border border-outline-variant flex flex-wrap gap-8 items-center justify-center">
+<span class="font-label-bold text-slate-gray uppercase text-xs tracking-widest">Incluye:</span>
+<span class="flex items-center gap-2 text-body-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Mantenimiento Correctivo</span>
+<span class="flex items-center gap-2 text-body-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Reemplazo de Equipos</span>
+<span class="flex items-center gap-2 text-body-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Pruebas de Rendimiento</span>
+</div>
+</div>
+</section>
+<!-- 4. Bridas Rompeagua -->
+<section class="scroll-mt-24 pb-12" id="bridas">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-gray pb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-slate-gray flex items-center justify-center rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-off-white text-3xl">settings_input_component</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-slate-gray">4. Bridas Rompeagua</h2>
+<p class="text-on-surface-variant font-body-sm uppercase tracking-wider">Fabricación Especializada y Estanqueidad Absoluta</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-3 bg-slate-gray text-off-white rounded-lg font-label-bold hover:bg-black transition-all" href="#">
+<span class="material-symbols-outlined">download</span> Brochure Técnico Bridas
+                </a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<p class="font-body-lg text-on-surface-variant">Servicio especializado de fabricación e instalación para obras de saneamiento, cisternas y cámaras de inspección, garantizando la durabilidad estructural.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="p-4 bg-white border border-gray rounded-lg">
+<h5 class="font-label-bold text-primary mb-2">Preparación</h5>
+<p class="text-xs text-on-surface-variant">Evaluación del área y preparación técnica del sustrato.</p>
+</div>
+<div class="p-4 bg-white border border-gray rounded-lg">
+<h5 class="font-label-bold text-primary mb-2">Fijación</h5>
+<p class="text-xs text-on-surface-variant">Alineamiento y fijación precisa de elementos de protección.</p>
+</div>
+<div class="p-4 bg-white border border-gray rounded-lg">
+<h5 class="font-label-bold text-primary mb-2">Soldadura</h5>
+<p class="text-xs text-on-surface-variant">Trabajos de soldadura y anclaje estructural bajo norma.</p>
+</div>
+<div class="p-4 bg-white border border-gray rounded-lg">
+<h5 class="font-label-bold text-primary mb-2">Estanqueidad</h5>
+<p class="text-xs text-on-surface-variant">Verificación rigurosa de filtraciones y control de calidad.</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-10 bg-primary/5 rounded-full blur-3xl"></div>
+<img alt="Water Stop Flange" class="relative z-10 w-full rounded-2xl shadow-2xl border border-gray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQBD65kRnkhyL57nirqNhVTpxNcqm-EFMkOZX6DWbkSaOr2UR_Y2Z040_2wAJZysXpGmzncGqfSAAKoUqtgf8e8Cg0Xph-m4kRHnOuWcdcQrPecLlFUpjLekf3adD_V9IQcYTstxOCM3PqI4VLdG4giHYgCS7UIttE5kP2R-RXCx2C-KwPHwpdpC6XGwUovw6VecNh42wriAxqlReLNUE-biodEfErDAN13zJhVuq28Ld1VG2F_YekXy04HAV7OoXCxRytdRjKL9qc"/>
+</div>
+</div>
+</section>
+<!-- Proceso de Trabajo Section -->
+<section class="bg-slate-gray rounded-3xl p-12 text-off-white overflow-hidden relative">
+<div class="absolute top-0 right-0 p-12 opacity-10">
+<span class="material-symbols-outlined text-[160px]">engineering</span>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-12 text-center">Nuestro Proceso de Trabajo</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold border-4 border-slate-gray shadow-xl">01</div>
+<h4 class="font-headline-md text-lg">Evaluación Técnica</h4>
+<p class="text-surface-variant text-sm">Inspección detallada en sitio para determinar requerimientos específicos.</p>
+</div>
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold border-4 border-slate-gray shadow-xl">02</div>
+<h4 class="font-headline-md text-lg">Cotización Justa</h4>
+<p class="text-surface-variant text-sm">Presupuesto detallado con materiales de primera y precios competitivos.</p>
+</div>
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold border-4 border-slate-gray shadow-xl">03</div>
+<h4 class="font-headline-md text-lg">Ejecución Experta</h4>
+<p class="text-surface-variant text-sm">Personal altamente capacitado cumpliendo plazos y normativas.</p>
+</div>
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold border-4 border-slate-gray shadow-xl">04</div>
+<h4 class="font-headline-md text-lg">Control de Calidad</h4>
+<p class="text-surface-variant text-sm">Pruebas operativas finales y entrega de garantía real por escrito.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-margin-desktop bg-slate-gray text-off-white">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="space-y-6">
+<span class="font-headline-md text-headline-md text-off-white font-bold">NJ CONSTRUCTEC</span>
+<p class="font-body-sm text-body-sm text-outline-variant leading-relaxed">Expertos en ingeniería sanitaria y eléctrica con más de 18 años de trayectoria impecable en el sector construcción peruano.</p>
+</div>
+<div>
+<h5 class="font-label-bold text-label-bold text-secondary-fixed-dim mb-6 uppercase tracking-widest">Servicios</h5>
+<ul class="space-y-3 font-body-sm text-body-sm text-outline-variant">
+<li><a class="hover:text-primary transition-colors" href="#sanitarias">Instalaciones Sanitarias</a></li>
+<li><a class="hover:text-primary transition-colors" href="#electricas">Instalaciones Eléctricas</a></li>
+<li><a class="hover:text-primary transition-colors" href="#bombeo">Equipos de Bombeo</a></li>
+<li><a class="hover:text-primary transition-colors" href="#bridas">Bridas Rompeagua</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-bold text-label-bold text-secondary-fixed-dim mb-6 uppercase tracking-widest">Corporativo</h5>
+<ul class="space-y-3 font-body-sm text-body-sm text-outline-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Sobre Nosotros</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Misión y Visión</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Proyectos Realizados</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Políticas de Calidad</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-bold text-label-bold text-secondary-fixed-dim mb-6 uppercase tracking-widest">Contacto Directo</h5>
+<div class="space-y-4 font-body-sm text-outline-variant">
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Lima, Perú</p>
+<p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> proyectos@njconstructec.com</p>
+<div class="flex gap-4 pt-4">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer">facebook</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer">share</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto border-t border-outline/20 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-outline-variant">
+<p>© 2024 NJ CONSTRUCTEC SAC. Todos los derechos reservados. Ingeniería con Garantía Real.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<span>Sitemap</span>
+<span>Aviso Legal</span>
+<span>Seguridad Industrial</span>
+</div>
+</div>
+</footer>
+<!-- Floating WhatsApp -->
+<a class="fixed bottom-8 right-8 z-[100] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 group" href="https://wa.me/51900000000" target="_blank">
+<svg class="w-8 h-8 fill-current" viewbox="0 0 24 24">
+<path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.893-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.556-5.332 11.89-11.893 11.89-2.015 0-3.991-.511-5.741-1.478l-6.252 1.697zm6.425-3.814l.362.215c1.432.851 3.086 1.3 4.793 1.3 4.961 0 9.001-4.041 9.001-9.002 0-2.401-.934-4.659-2.631-6.355s-3.955-2.63-6.356-2.63c-4.962 0-9.003 4.041-9.003 9.003 0 1.79.531 3.535 1.536 5.045l.234.353-1.006 3.676 3.77-1.021zm10.741-7.14c-.292-.146-1.727-.852-1.995-.951-.267-.099-.463-.146-.659.146-.195.292-.756.951-.926 1.146-.171.194-.341.219-.634.073-.292-.146-1.234-.455-2.351-1.451-.869-.775-1.456-1.732-1.626-2.025-.171-.292-.019-.45.127-.595.132-.132.292-.341.439-.512.146-.171.194-.292.292-.487.098-.195.049-.366-.025-.512-.073-.146-.659-1.585-.902-2.17-.236-.57-.478-.493-.659-.502-.171-.008-.366-.01-.561-.01s-.512.073-.781.366c-.268.293-1.024 1.001-1.024 2.439s1.049 2.829 1.195 3.024c.146.195 2.065 3.153 5.003 4.427.699.303 1.244.484 1.67.62.702.223 1.341.191 1.846.116.564-.083 1.727-.706 1.972-1.389.244-.683.244-1.268.171-1.39-.074-.122-.268-.195-.561-.342z"></path>
+</svg>
+<span class="absolute right-full mr-4 bg-slate-gray text-off-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">Presupuesto Inmediato</span>
+</a>
+<script>
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-md', 'h-14');
+            header.classList.remove('h-16');
+        } else {
+            header.classList.remove('shadow-md', 'h-14');
+            header.classList.add('h-16');
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section, .bento-item').forEach(el => {
+        el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+        observer.observe(el);
+    });
+</script>
+</body></html>

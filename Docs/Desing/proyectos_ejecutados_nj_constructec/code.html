@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Proyectos | NJ CONSTRUCTEC</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb95f",
+                        "outline-variant": "#c1c7d1",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d9e3f7",
+                        "on-primary-fixed-variant": "#00497b",
+                        "surface-container-low": "#eff3ff",
+                        "on-background": "#121c2a",
+                        "secondary-container": "#fcae45",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface": "#f9f9ff",
+                        "primary-fixed": "#d0e4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#9a6c00",
+                        "on-error": "#ffffff",
+                        "blueprint-bg": "#F3F4F6",
+                        "secondary": "#855300",
+                        "on-primary-container": "#fdfcff",
+                        "off-white": "#F9FAFB",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#18629c",
+                        "background": "#f9f9ff",
+                        "primary-container": "#3878b4",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary": "#7a5500",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdeab",
+                        "surface-container": "#e6eeff",
+                        "on-surface-variant": "#414750",
+                        "surface-dim": "#d0daef",
+                        "on-secondary-container": "#6e4400",
+                        "border-gray": "#E5E7EB",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "inverse-primary": "#9ccaff",
+                        "tertiary-fixed-dim": "#f7bd55",
+                        "secondary-fixed": "#ffddb8",
+                        "on-surface": "#121c2a",
+                        "on-error-container": "#93000a",
+                        "slate-gray": "#1F2937",
+                        "surface-container-high": "#dee9fd",
+                        "on-tertiary-fixed": "#271900",
+                        "outline": "#717781",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001d35",
+                        "primary": "#135f99",
+                        "surface-container-highest": "#d9e3f7",
+                        "primary-fixed-dim": "#9ccaff",
+                        "inverse-surface": "#273140",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .filter-btn.active {
+            @apply bg-primary text-on-primary border-primary;
+        }
+        body {
+            background-color: #F9F9FF;
+            color: #121C2A;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto bg-surface border-b border-gray duration-200 ease-in-out">
+<div class="font-headline-md text-headline-md font-bold text-slate-gray">NJ CONSTRUCTEC</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+<a class="font-label-bold text-label-bold text-primary border-b-2 border-primary pb-1 transition-colors" href="#">Projects</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Insights</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 font-label-bold text-label-bold rounded hover:bg-primary-container transition-colors">
+            Get a Quote
+        </button>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-slate-gray">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop">
+<!-- Page Header -->
+<div class="mb-12">
+<h1 class="font-display-lg text-display-lg mb-4 text-slate-gray">Nuestros Proyectos</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Explora nuestra trayectoria de excelencia. Desde infraestructuras industriales hasta desarrollos residenciales de lujo, cada obra refleja nuestro compromiso con la precisión técnica y la integridad estructural.
+            </p>
+</div>
+<!-- Filters Section -->
+<div class="flex flex-wrap items-center gap-4 mb-10 border-b border-border-gray pb-6">
+<span class="font-label-bold text-label-bold text-outline uppercase tracking-widest mr-2">Filtrar por:</span>
+<button class="filter-btn active px-4 py-2 font-label-bold text-label-bold border border-border-gray rounded-lg transition-all hover:border-primary">TODOS</button>
+<button class="filter-btn px-4 py-2 font-label-bold text-label-bold border border-border-gray rounded-lg transition-all hover:border-primary">INFRAESTRUCTURA</button>
+<button class="filter-btn px-4 py-2 font-label-bold text-label-bold border border-border-gray rounded-lg transition-all hover:border-primary">INDUSTRIAL</button>
+<button class="filter-btn px-4 py-2 font-label-bold text-label-bold border border-border-gray rounded-lg transition-all hover:border-primary">RESIDENCIAL</button>
+<button class="filter-btn px-4 py-2 font-label-bold text-label-bold border border-border-gray rounded-lg transition-all hover:border-primary">REMODELACIÓN</button>
+</div>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Project 1 -->
+<div class="project-card bg-white border border-border-gray overflow-hidden group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional architectural photograph of a sleek, modern industrial warehouse under a clear blue sky. The building features large steel structural elements and glass panels, reflecting a high-end engineering aesthetic. The lighting is crisp morning sun, highlighting the metallic textures and precision of the construction. The overall mood is authoritative and clean, consistent with industrial excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDlR8KBHDhmHWees0FBlZFHOnyo2u2tfpS2qogMiUxzn_oeadaZwxbL0BLaQSgeWxQMhxTs4Sqt4vEC3wUUl5ikCfdCFVoHMUOGR93UwzZ1XIdkzATDfvmAQM9yySdWlU-rOtpKmDLnvuGfAOmiSwJwqhaE0BMdxDWSAuMJN5LBVXHBtiZ0SIzrfU5aigKOx49LGVjze970WRfg7fhC7xI5Rlhr4n7eNGqCFLOoQkklDz3vQS5T4HCEf3eArfoWCRBy9RgSOm6AEjF"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-white text-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-slate-gray">Centro Logístico Alfa</h3>
+<span class="bg-surface-container-high text-primary px-3 py-1 font-label-bold text-label-bold rounded">Industrial</span>
+</div>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+<span class="font-body-sm text-body-sm">Querétaro, México</span>
+</div>
+<div class="pt-4 border-t border-border-gray">
+<p class="font-label-bold text-label-bold text-outline mb-1">SERVICIO</p>
+<p class="font-body-md text-body-md font-semibold text-slate-gray">Construcción Estructural y Acabados</p>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card bg-white border border-border-gray overflow-hidden group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An expansive view of a large-scale bridge construction project over a wide river. Massive concrete pillars and steel girders are visible, showcasing intricate civil engineering. The scene is captured at golden hour, casting long, soft shadows and a warm glow over the site. The atmosphere conveys grand scale, technical complexity, and professional reliability in infrastructure development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo2lfcmk2dAUVDwHJvFzvFtJDhrS1s9ot24ZPXxnvxL0rh2twML2IqMSXrt15oPXjG9x-RcJKr9HiuXwy__pSYtnP84oBfKchYJYbE5_OtDpM0f-0gaO2m377oPmd6DRSQn-P5GoNRL6ItWTi4aMSmiyrym1-aknb4JcqbNkJpUUPSpFlPI2qtSc61JFRwO_zI9cLWnsTJBhNkH6FUfvtrJgXUgv5Ew-P1qfQ0yusQelbGMaYBLMOk238W_x4dMSRSnI5StdiFJ7zE"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-white text-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-slate-gray">Viaducto Bicentenario</h3>
+<span class="bg-surface-container-high text-primary px-3 py-1 font-label-bold text-label-bold rounded">Infraestructura</span>
+</div>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+<span class="font-body-sm text-body-sm">Estado de México</span>
+</div>
+<div class="pt-4 border-t border-border-gray">
+<p class="font-label-bold text-label-bold text-outline mb-1">SERVICIO</p>
+<p class="font-body-md text-body-md font-semibold text-slate-gray">Ingeniería Civil y Cimentación Profunda</p>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card bg-white border border-border-gray overflow-hidden group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A low-angle shot of a luxury high-rise residential building with floor-to-ceiling windows and cantilevered balconies. The facade uses premium materials like limestone and dark metal accents. The surrounding environment includes manicured urban greenery. The photograph is shot during twilight, with interior lights glowing softly, creating a sophisticated and elite lifestyle mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWfKRvHR59GVCGQsvLs0a6erFaQmteKRYI_AkhlyDF0djyA4xGPI6sotG5bHvSPIXgb5oQspKCo4CGlAZwiwRUropfUwDym02xTEGo7AAPXN2dnpKygVmo3JeBJz-x__z65ks0Gdq_cabIWor_bpQ5522hZBNylgagi10_Ou_JbUzQ5IAo8cpz4VxR_znBqh33XyG4steV46_BtkUGMPfqwOc5hZRlVfPyOkltUj5Fvlu7G_4IBPG4k10w9gTWG_4XDyoXY7jywn51"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-white text-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-slate-gray">Torre Meridiano</h3>
+<span class="bg-surface-container-high text-primary px-3 py-1 font-label-bold text-label-bold rounded">Residencial</span>
+</div>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+<span class="font-body-sm text-body-sm">CDMX, Santa Fe</span>
+</div>
+<div class="pt-4 border-t border-border-gray">
+<p class="font-label-bold text-label-bold text-outline mb-1">SERVICIO</p>
+<p class="font-body-md text-body-md font-semibold text-slate-gray">Gerencia de Obra y Supervisión</p>
+</div>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="project-card bg-white border border-border-gray overflow-hidden group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A wide interior shot of a high-tech manufacturing plant featuring clean white floors, automated machinery, and bright LED lighting. The space is exceptionally organized, emphasizing industrial hygiene and efficiency. Workers in professional gear are visible in the background, adding a sense of active production. The style is ultra-modern and corporate-industrial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3M_AIcfAItl-a-vAqgu7CzJ6jJ4amPyFFwBL_QIf0MAK3TLYCDox7Uq6oyKm0mKaS1o_Bg14k7hKqyUt8Rhgy80TJuD-EGD_2KGkmyBu1uzT8PkW4p1Wbg8uwZgUfVneL7gYNQfGMx-J1DfTlC-rFzbtH2JAOEQ5RA4yB_S5_fOeEhUbk0ZpMksFSibZTk7Yezxn8b-unA2EKOwS_onn8tE_qnFHtm4YBNIKZscTGC6Ojfe4Ov4mAoNTyAOG3X3rjuGl_GqUuXHRm"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-white text-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-slate-gray">Planta Procesadora Tech</h3>
+<span class="bg-surface-container-high text-primary px-3 py-1 font-label-bold text-label-bold rounded">Industrial</span>
+</div>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+<span class="font-body-sm text-body-sm">Monterrey, NL</span>
+</div>
+<div class="pt-4 border-t border-border-gray">
+<p class="font-label-bold text-label-bold text-outline mb-1">SERVICIO</p>
+<p class="font-body-md text-body-md font-semibold text-slate-gray">Instalaciones Especiales e Industriales</p>
+</div>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="project-card bg-white border border-border-gray overflow-hidden group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="The exterior facade of a renovated historic office building. The design harmoniously blends original brickwork with contemporary glass and black steel additions. The photo is taken from a street-level perspective during a bright afternoon, showing the crisp contrast between old and new architectural styles. The aesthetic is professional, creative, and meticulously detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsnOOpRRNCe7B6vRhc7N3nzUunO0ZwdxDfgiMvbWwBBtcDIEhyXkgz_MhWr9EBJTmM7S54MAR9cz6B3-VdhPRA_xJKY8dqTC-jPVoYCwy2X8JXYCo0saWCGBZTk931xG4_mr-TCJnSi7ifyQ4wRFYhYZqCHz_w3-oUWlRi-rEpDuoyeOSIavS2T-UrwDU4S6DQKkzbBWL-YBaWA9CID22rrVhQDffo11Rme40t1ccGYsO3tMY5QzcaCSHiBFFvP3R1I_j4aA4F6D2s"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-white text-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-slate-gray">Oficinas Corporativas Sky</h3>
+<span class="bg-surface-container-high text-primary px-3 py-1 font-label-bold text-label-bold rounded">Remodelación</span>
+</div>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+<span class="font-body-sm text-body-sm">Guadalajara, Jal.</span>
+</div>
+<div class="pt-4 border-t border-border-gray">
+<p class="font-label-bold text-label-bold text-outline mb-1">SERVICIO</p>
+<p class="font-body-md text-body-md font-semibold text-slate-gray">Diseño y Remodelación Integral</p>
+</div>
+</div>
+</div>
+<!-- Project 6 -->
+<div class="project-card bg-white border border-border-gray overflow-hidden group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An aerial view of a large commercial shopping complex featuring expansive parking areas and modern flat-roof structures with solar panel installations. The layout is geometric and organized, showing urban planning precision. The lighting is bright midday sun, emphasizing the scale and clean lines of the construction site. The tone is progress-oriented and sturdy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcuLynA5uIzilJcEbQ0Hc8eBoC_0GtQDFZjKOVPJgAWH44utRb1p-wUYxZ5dc6H5zOBy7SiwSSiL2KK_VqtZdjjZRMGNfMfb3B71lNtuoCsIfJPQQjFVzONirGTlLx_f46WF7RyXBzzGwXC9hqKNBsVMtbTqfMk8CEkzYAvLE-NHXCqMUP8_5J0j4vMxT9exMANqQ_LwrZePdltjctl_tT6m-y1pq-BpHFnjOpyC3lkJYlmCC4OmxKDquCGITAWOew4GSEj1NCkpcE"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="bg-white text-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-slate-gray">Plaza Comercial Norte</h3>
+<span class="bg-surface-container-high text-primary px-3 py-1 font-label-bold text-label-bold rounded">Infraestructura</span>
+</div>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+<span class="font-body-sm text-body-sm">Puebla, Pue.</span>
+</div>
+<div class="pt-4 border-t border-border-gray">
+<p class="font-label-bold text-label-bold text-outline mb-1">SERVICIO</p>
+<p class="font-body-md text-body-md font-semibold text-slate-gray">Construcción General y Pavimentos</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex justify-center">
+<button class="flex items-center space-x-2 border-2 border-primary text-primary px-8 py-3 rounded-lg font-label-bold text-label-bold hover:bg-primary hover:text-on-primary transition-all duration-300">
+<span>CARGAR MÁS PROYECTOS</span>
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-slate-gray text-off-white border-t border-outline">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md text-off-white mb-6">NJ CONSTRUCTEC</div>
+<p class="font-body-sm text-body-sm text-outline-variant leading-relaxed">
+                Expertos en soluciones integrales de ingeniería y construcción para el sector industrial, comercial y residencial.
+            </p>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-white mb-6 uppercase tracking-wider">Enlaces Rápidos</h4>
+<ul class="space-y-3">
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Servicios</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Nosotros</a></li>
+<li><a class="font-body-sm text-body-sm text-secondary-fixed hover:text-off-white transition-colors" href="#">Proyectos</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-white mb-6 uppercase tracking-wider">Legal</h4>
+<ul class="space-y-3">
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Safety Standards</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-white mb-6 uppercase tracking-wider">Contacto</h4>
+<p class="font-body-sm text-body-sm text-outline-variant mb-4">
+                Av. de las Construcciones 123<br/>
+                Ciudad de México, CP 01000
+            </p>
+<p class="font-body-sm text-body-sm text-outline-variant">
+                contacto@njconstructec.com<br/>
+                +52 (55) 1234 5678
+            </p>
+</div>
+<div class="col-span-1 md:col-span-4 pt-12 mt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center opacity-60">
+<p class="font-body-sm text-body-sm">© 2024 NJ CONSTRUCTEC. All rights reserved. Professional Engineering &amp; Construction Services.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed">assured_workload</span>
+</div>
+</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300" href="https://wa.me/525512345678" target="_blank">
+<svg fill="currentColor" height="32" viewbox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+</svg>
+</a>
+<script>
+        // Micro-interactions for filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Add a small scale animation
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = 'scale(1)', 100);
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.add('h-14');
+                header.classList.remove('h-16');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.remove('h-14');
+                header.classList.add('h-16');
+            }
+        });
+    </script>
+</body></html>

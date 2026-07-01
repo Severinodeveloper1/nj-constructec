@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Libro de Reclamaciones - NJ CONSTRUCTEC</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb95f",
+                        "outline-variant": "#c1c7d1",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d9e3f7",
+                        "on-primary-fixed-variant": "#00497b",
+                        "surface-container-low": "#eff3ff",
+                        "on-background": "#121c2a",
+                        "secondary-container": "#fcae45",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface": "#f9f9ff",
+                        "primary-fixed": "#d0e4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#9a6c00",
+                        "on-error": "#ffffff",
+                        "blueprint-bg": "#F3F4F6",
+                        "secondary": "#855300",
+                        "on-primary-container": "#fdfcff",
+                        "off-white": "#F9FAFB",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#18629c",
+                        "background": "#f9f9ff",
+                        "primary-container": "#3878b4",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary": "#7a5500",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdeab",
+                        "surface-container": "#e6eeff",
+                        "on-surface-variant": "#414750",
+                        "surface-dim": "#d0daef",
+                        "on-secondary-container": "#6e4400",
+                        "border-gray": "#E5E7EB",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "inverse-primary": "#9ccaff",
+                        "tertiary-fixed-dim": "#f7bd55",
+                        "secondary-fixed": "#ffddb8",
+                        "on-surface": "#121c2a",
+                        "on-error-container": "#93000a",
+                        "slate-gray": "#1F2937",
+                        "surface-container-high": "#dee9fd",
+                        "on-tertiary-fixed": "#271900",
+                        "outline": "#717781",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001d35",
+                        "primary": "#135f99",
+                        "surface-container-highest": "#d9e3f7",
+                        "primary-fixed-dim": "#9ccaff",
+                        "inverse-surface": "#273140",
+                        "inverse-on-surface": "#ebf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f9f9ff;
+        }
+        .form-section-title {
+            border-left: 4px solid #135f99;
+            padding-left: 12px;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto bg-surface border-b border-gray transition-colors duration-200 ease-in-out">
+<div class="font-headline-md text-headline-md font-bold text-slate-gray">
+            NJ CONSTRUCTEC
+        </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Insights</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-bold text-label-bold hover:bg-primary-container transition-colors">
+                Get a Quote
+            </button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main class="pt-24 pb-20 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-border-gray pb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-slate-gray mb-2">Libro de Reclamaciones</h1>
+<p class="text-on-surface-variant font-body-md">Conforme a lo establecido en el Código de Protección y Defensa del Consumidor.</p>
+</div>
+<div class="bg-off-white border border-border-gray p-4 rounded-lg inline-block text-right">
+<p class="text-label-bold font-label-bold text-outline uppercase">Hoja de Reclamación</p>
+<p class="text-headline-md font-headline-md text-primary">N° 2024-00154</p>
+</div>
+</div>
+</header>
+<!-- Main Form Container -->
+<form class="space-y-12">
+<!-- Section 1: Consumer Data -->
+<section class="bg-white p-6 md:p-10 border border-border-gray rounded-xl shadow-sm">
+<div class="form-section-title">
+<h2 class="font-headline-md text-headline-md text-slate-gray">1. Identificación del Consumidor</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Nombres y Apellidos</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Ej: Juan Pérez" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Documento de Identidad (DNI/CE)</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="8 dígitos" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Correo Electrónico</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="correo@ejemplo.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Teléfono / Celular</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="+51 999 999 999" type="tel"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Domicilio</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Av. Principal 123, Distrito, Ciudad" type="text"/>
+</div>
+</div>
+</section>
+<!-- Section 2: Product/Service Details -->
+<section class="bg-white p-6 md:p-10 border border-border-gray rounded-xl shadow-sm">
+<div class="form-section-title">
+<h2 class="font-headline-md text-headline-md text-slate-gray">2. Detalle del Bien Contratado</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-4">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Tipo de Bien</label>
+<div class="flex gap-6">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="text-primary focus:ring-primary border-outline-variant w-5 h-5" name="bien_tipo" type="radio"/>
+<span class="font-body-md group-hover:text-primary">Producto</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="text-primary focus:ring-primary border-outline-variant w-5 h-5" name="bien_tipo" type="radio"/>
+<span class="font-body-md group-hover:text-primary">Servicio</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Monto Reclamado (S/.)</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Descripción del Bien</label>
+<input class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Ej: Obra de remodelación de fachada / Compra de materiales" type="text"/>
+</div>
+</div>
+</section>
+<!-- Section 3: Complaint Detail -->
+<section class="bg-white p-6 md:p-10 border border-border-gray rounded-xl shadow-sm">
+<div class="form-section-title">
+<h2 class="font-headline-md text-headline-md text-slate-gray">3. Detalle de la Reclamación</h2>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-4">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Tipo de Reclamación</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="border border-border-gray p-4 rounded-lg hover:border-primary transition-colors cursor-pointer relative">
+<input class="absolute right-4 top-4 text-primary focus:ring-primary" id="reclamacion_reclamo" name="reclamacion_tipo" type="radio"/>
+<label class="block cursor-pointer" for="reclamacion_reclamo">
+<span class="block font-label-bold text-slate-gray text-body-md font-bold mb-1">Reclamo</span>
+<span class="block text-body-sm text-on-surface-variant">Disconformidad relacionada a los productos o servicios.</span>
+</label>
+</div>
+<div class="border border-border-gray p-4 rounded-lg hover:border-primary transition-colors cursor-pointer relative">
+<input class="absolute right-4 top-4 text-primary focus:ring-primary" id="reclamacion_queja" name="reclamacion_tipo" type="radio"/>
+<label class="block cursor-pointer" for="reclamacion_queja">
+<span class="block font-label-bold text-slate-gray text-body-md font-bold mb-1">Queja</span>
+<span class="block text-body-sm text-on-surface-variant">Disconformidad no relacionada directamente a los productos o servicios (Atención al cliente).</span>
+</label>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Detalle del Reclamo o Queja</label>
+<textarea class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Describa detalladamente lo sucedido..." rows="5"></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-bold text-body-sm text-slate-gray font-bold">Pedido del Usuario (Solicitud)</label>
+<textarea class="w-full bg-off-white border-border-gray border rounded-lg p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="¿Qué es lo que solicita para resolver esta situación?" rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Submit & Legal -->
+<div class="space-y-6">
+<div class="flex items-start gap-3 bg-surface-container-low p-4 rounded-lg border border-primary-container">
+<span class="material-symbols-outlined text-primary mt-1">info</span>
+<p class="text-body-sm text-on-surface-variant">
+                        La formulación del reclamo en este Libro de Reclamaciones no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI. El proveedor deberá dar respuesta al reclamo o queja en un plazo no mayor a quince (15) días hábiles improrrogables.
+                    </p>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-outline-variant w-5 h-5" type="checkbox"/>
+<span class="text-body-sm text-slate-gray">Acepto los <a class="text-primary underline" href="#">Términos de Privacidad</a> y envío de datos.</span>
+</label>
+<button class="w-full md:w-auto bg-primary text-on-primary px-12 py-4 rounded-lg font-label-bold text-body-md font-bold hover:bg-primary-container transition-all shadow-md active:scale-95" type="submit">
+                        Enviar Reclamación
+                    </button>
+</div>
+</div>
+</form>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-slate-gray text-off-white border-t border-outline">
+<div class="md:col-span-1">
+<h3 class="font-headline-md text-headline-md text-off-white mb-4">NJ CONSTRUCTEC</h3>
+<p class="font-body-sm text-body-sm text-outline-variant">
+                Expertos en ingeniería y construcción civil con los más altos estándares de seguridad y calidad del mercado peruano.
+            </p>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-secondary-fixed-dim uppercase mb-4">Empresa</h4>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Nosotros</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Portafolio</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Seguridad (SST)</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Trabaja con nosotros</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-secondary-fixed-dim uppercase mb-4">Legal</h4>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Política de Privacidad</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Términos de Servicio</a></li>
+<li><a class="font-body-sm text-body-sm text-outline-variant hover:text-off-white transition-colors" href="#">Normas de Seguridad</a></li>
+<li><a class="font-body-sm text-body-sm text-off-white font-bold transition-colors" href="#">Libro de Reclamaciones</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-secondary-fixed-dim uppercase mb-4">Contacto</h4>
+<div class="flex items-center gap-2 mb-2 text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="text-body-sm">Lima, Perú</span>
+</div>
+<div class="flex items-center gap-2 mb-2 text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span class="text-body-sm">contacto@njconstructec.pe</span>
+</div>
+</div>
+<div class="md:col-span-4 mt-8 pt-8 border-t border-outline/20 text-center">
+<p class="font-body-sm text-body-sm text-outline-variant">
+                © 2024 NJ CONSTRUCTEC. All rights reserved. Professional Engineering &amp; Construction Services.
+            </p>
+</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group" href="https://wa.me/51999999999" target="_blank">
+<svg fill="currentColor" height="32" viewbox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.898 3.013 1.374 4.806 1.375 5.203 0 9.435-4.232 9.437-9.435.001-2.522-.982-4.893-2.767-6.679-1.785-1.785-4.156-2.767-6.68-2.768-5.204 0-9.435 4.232-9.437 9.435-.001 1.884.512 3.413 1.488 4.908l-.986 3.604 3.739-.98zm11.362-5.462c-.302-.151-1.788-.882-2.065-.982-.277-.1-.478-.151-.68.151-.202.302-.782.982-.958 1.183-.176.202-.352.227-.655.076-.303-.151-1.278-.47-2.434-1.498-.899-.803-1.506-1.795-1.683-2.097-.176-.302-.019-.465.132-.615.136-.135.302-.352.453-.529.151-.176.202-.302.302-.504.101-.202.05-.378-.025-.529-.076-.151-.68-1.639-.932-2.245-.245-.591-.494-.51-.68-.52l-.579-.011c-.202 0-.529.076-.806.378-.277.302-1.057 1.033-1.057 2.518s1.083 2.921 1.233 3.123c.151.202 2.132 3.256 5.165 4.563.72.311 1.282.496 1.72.636.724.23 1.383.197 1.903.12.58-.087 1.788-.73 2.04-1.436.252-.706.252-1.31.176-1.436-.076-.126-.277-.202-.579-.353z"></path>
+</svg>
+<span class="absolute right-full mr-4 bg-slate-gray text-white text-body-sm py-1 px-3 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            ¡Hablemos por WhatsApp!
+        </span>
+</a>
+<script>
+        // Form Interactivity
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="flex items-center gap-2">Procesando... <span class="animate-spin text-xl">⏳</span></span>';
+            
+            setTimeout(() => {
+                alert('Su reclamación ha sido enviada exitosamente. Se ha enviado una copia a su correo electrónico. Código de registro: 2024-00154');
+                btn.disabled = false;
+                btn.innerText = originalText;
+                e.target.reset();
+            }, 1500);
+        });
+
+        // Simple Mobile Nav
+        const menuBtn = document.querySelector('nav button');
+        menuBtn.addEventListener('click', () => {
+            alert('Menú de navegación para móviles (Simulación)');
+        });
+    </script>
+</body></html>
