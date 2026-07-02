@@ -17,54 +17,53 @@
 <!-- Blog Grid -->
 <section class="py-24 bg-white">
     <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop space-y-16">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Article 1 -->
-            <article class="bg-off-white border border-border-gray p-8 rounded-lg hover:border-primary transition-colors flex flex-col justify-between space-y-6">
-                <div class="space-y-4">
-                    <span class="text-[10px] font-mono text-primary font-bold uppercase tracking-wider">Mantenimiento Preventivo</span>
-                    <h2 class="font-headline-md text-xl font-bold text-slate-gray">Cómo evitar aniegos en sótanos mediante el correcto mantenimiento de bombas</h2>
-                    <p class="font-body-sm text-on-surface-variant text-justify leading-relaxed">
-                        El mantenimiento de bombas sumergibles y sensores de nivel electrónicos es crucial para evitar inundaciones catastróficas. Aquí le mostramos cómo programar sus chequeos preventivos.
-                    </p>
-                </div>
-                <div class="border-t border-border-gray pt-4 flex justify-between items-center text-xs text-outline">
-                    <span>Por: Ing. David Jara</span>
-                    <span>15 Jun 2026</span>
-                </div>
-            </article>
-
-            <!-- Article 2 -->
-            <article class="bg-off-white border border-border-gray p-8 rounded-lg hover:border-primary transition-colors flex flex-col justify-between space-y-6">
-                <div class="space-y-4">
-                    <span class="text-[10px] font-mono text-primary font-bold uppercase tracking-wider">Normas Técnicas</span>
-                    <h2 class="font-headline-md text-xl font-bold text-slate-gray">Importancia de las bridas rompeagua en el vaciado de cisternas de concreto</h2>
-                    <p class="font-body-sm text-on-surface-variant text-justify leading-relaxed">
-                        Las filtraciones de agua comprometen la cimentación de un edificio. Conozca cómo el correcto alineamiento de las bridas rompeagua previene el paso de humedad por las juntas estructurales.
-                    </p>
-                </div>
-                <div class="border-t border-border-gray pt-4 flex justify-between items-center text-xs text-outline">
-                    <span>Por: Ing. Walter Silva</span>
-                    <span>02 Jun 2026</span>
-                </div>
-            </article>
-
-            <!-- Article 3 -->
-            <article class="bg-off-white border border-border-gray p-8 rounded-lg hover:border-primary transition-colors flex flex-col justify-between space-y-6">
-                <div class="space-y-4">
-                    <span class="text-[10px] font-mono text-primary font-bold uppercase tracking-wider">Seguridad Eléctrica</span>
-                    <h2 class="font-headline-md text-xl font-bold text-slate-gray">Pozos a tierra y llaves diferenciales: Elementos clave para la seguridad en el hogar</h2>
-                    <p class="font-body-sm text-on-surface-variant text-justify leading-relaxed">
-                        Las descargas eléctricas accidentales ocurren por fallas de aislamiento en los artefactos. Le explicamos la importancia del pozo a tierra y el mantenimiento periódico de sus tableros eléctricos.
-                    </p>
-                </div>
-                <div class="border-t border-border-gray pt-4 flex justify-between items-center text-xs text-outline">
-                    <span>Por: Técnico Electricista Carlos R.</span>
-                    <span>22 May 2026</span>
-                </div>
-            </article>
-        </div>
-
+        @if(isset($posts) && $posts->count() > 0)
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($posts as $post)
+                    <article class="bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all duration-300 flex flex-col group overflow-hidden shadow-sm hover:shadow-md">
+                        <!-- Image -->
+                        <div class="aspect-[16/10] overflow-hidden relative bg-slate-200">
+                            @if($post->image_path)
+                                <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center bg-slate-300">
+                                    <span class="material-symbols-outlined text-4xl text-white">article</span>
+                                </div>
+                            @endif
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-3">
+                                <span class="text-[10px] font-mono text-primary font-bold uppercase tracking-wider">
+                                    {{ $post->meta_keywords ? head(explode(',', $post->meta_keywords)) : 'Artículo Técnico' }}
+                                </span>
+                                <h2 class="font-headline-md text-lg font-bold text-slate-gray group-hover:text-primary transition-colors line-clamp-2">
+                                    <a href="{{ route('blog.post', $post->slug) }}">{{ $post->title }}</a>
+                                </h2>
+                                <p class="text-xs text-on-surface-variant line-clamp-3 text-justify">
+                                    {{ $post->meta_description ?? strip_tags($post->content) }}
+                                </p>
+                            </div>
+                            
+                            <div class="border-t border-border-gray/50 pt-4 flex justify-between items-center text-[11px] text-outline font-mono mt-auto">
+                                <span>{{ $post->published_at ? $post->published_at->format('d M, Y') : $post->created_at->format('d M, Y') }}</span>
+                                <a href="{{ route('blog.post', $post->slug) }}" class="text-primary hover:underline font-label-bold flex items-center gap-1">
+                                    Leer Más <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pt-6">
+                {{ $posts->links() }}
+            </div>
+        @else
+            <p class="text-center text-outline">No hay artículos publicados en el blog en este momento.</p>
+        @endif
     </div>
 </section>
 @endsection

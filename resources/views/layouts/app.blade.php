@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
+    <meta name="description" content="@yield('meta_description', 'Expertos peruanos en instalaciones sanitarias, eléctricas y sistemas de bombeo con más de 18 años de experiencia.')" />
+    <meta name="keywords" content="@yield('meta_keywords', 'ingenieria, construccion, sanitarias, electricas, bombeo, peru, constructec')" />
+    
     <title>@yield('title', $setting->name . ' | Expertos en Instalaciones y Construcción')</title>
     
     <!-- Fonts & Icons -->
@@ -94,6 +97,11 @@
                 <a class="font-label-bold text-lg {{ Request::is('proyectos*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/proyectos') }}">Proyectos</a>
                 <a class="font-label-bold text-lg {{ Request::is('blog*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/blog') }}">Insights</a>
                 <a class="font-label-bold text-lg {{ Request::is('contacto*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/contacto') }}">Contacto</a>
+                @if($setting->brochure_path)
+                    <a href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download class="font-label-bold text-lg text-primary flex items-center gap-1">
+                        Descargar Brochure <span class="material-symbols-outlined text-sm">download</span>
+                    </a>
+                @endif
                 <a href="{{ url('/contacto') }}" class="bg-primary text-on-primary text-center py-3 rounded font-label-bold mt-4">
                     Cotizar Proyecto
                 </a>
@@ -150,6 +158,9 @@
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors" href="{{ url('/nosotros') }}">Quiénes Somos</a></li>
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors" href="{{ url('/nosotros#mision-vision') }}">Misión y Visión</a></li>
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors" href="{{ url('/nosotros#valores') }}">Nuestros Valores</a></li>
+                    @if($setting->brochure_path)
+                        <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors flex items-center gap-1" href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download>Descargar Brochure <span class="material-symbols-outlined text-xs">download</span></a></li>
+                    @endif
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors text-yellow-500 font-semibold" href="{{ url('/libro-reclamaciones') }}">📙 Libro de Reclamaciones</a></li>
                 </ul>
             </div>

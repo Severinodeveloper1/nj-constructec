@@ -9,6 +9,7 @@ Route::get('/nosotros', [FrontendController::class, 'about'])->name('about');
 Route::get('/servicios', [FrontendController::class, 'services'])->name('services');
 Route::get('/proyectos', [FrontendController::class, 'projects'])->name('projects');
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('/blog/{slug}', [FrontendController::class, 'blogPost'])->name('blog.post');
 
 // Contact Form (with Rate Limiting)
 Route::get('/contacto', [FrontendController::class, 'contact'])->name('contact');

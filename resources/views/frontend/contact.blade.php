@@ -51,6 +51,22 @@
                     <p class="font-body-md text-slate-gray">{{ $setting->address }}</p>
                 </div>
 
+                @if($setting->brochure_path)
+                    <div class="bg-surface-container border border-border-gray p-6 rounded-lg flex items-center justify-between gap-4 mt-6">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary text-4xl">download_for_offline</span>
+                            <div>
+                                <h4 class="font-bold text-slate-gray text-sm">Brochure Corporativo</h4>
+                                <p class="text-[11px] text-on-surface-variant">Conozca nuestra trayectoria y capacidades.</p>
+                            </div>
+                        </div>
+                        <a href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download class="bg-primary text-white px-4 py-2.5 rounded font-label-bold text-xs hover:opacity-90 transition-opacity flex items-center gap-1">
+                            Descargar
+                            <span class="material-symbols-outlined text-sm">download</span>
+                        </a>
+                    </div>
+                @endif
+
                 @if($setting->maps_iframe)
                     <div class="min-h-[300px] bg-blueprint-bg rounded border border-border-gray overflow-hidden">
                         {!! $setting->maps_iframe !!}

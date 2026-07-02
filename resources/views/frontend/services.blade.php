@@ -17,163 +17,89 @@
 <!-- Services Grid/Details -->
 <section class="py-24 bg-white">
     <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop space-y-24">
-        
-        <!-- 1. Instalaciones Sanitarias -->
-        <div id="sanitarias" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start scroll-mt-24">
-            <div class="lg:col-span-5 space-y-6">
-                <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded">
-                    <span class="material-symbols-outlined text-primary text-4xl">plumbing</span>
-                </div>
-                <h2 class="font-headline-lg text-3xl font-bold text-slate-gray">Instalaciones Sanitarias</h2>
-                <p class="font-body-md text-on-surface-variant leading-relaxed">
-                    Diseño, instalación y mantenimiento preventivo y correctivo de sistemas de agua fría, caliente y desagües residenciales e industriales.
-                </p>
-                <div class="border-t border-border-gray pt-6">
-                    <a href="{{ url('/contacto') }}" class="inline-flex items-center gap-2 font-label-bold text-primary hover:opacity-80 transition-opacity">
-                        Solicitar cotización de sanitarias <span class="material-symbols-outlined">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-off-white border border-border-gray p-8 rounded-lg">
-                <h3 class="font-label-bold text-slate-gray uppercase tracking-wider mb-6 text-sm">Nuestro servicio incluye:</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Redes Nuevas</h4>
-                        <p class="text-xs text-on-surface-variant">Agua fría/caliente y desagües empotrados en PPR, PVC, CPVC, HDPE.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Reparación de Fugas</h4>
-                        <p class="text-xs text-on-surface-variant">Detección y reparación oportuna de fugas invisibles y cambio de tuberías.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Aparatos Sanitarios</h4>
-                        <p class="text-xs text-on-surface-variant">Instalación fina de inodoros, griferías de alta gama, termas a gas y eléctricas.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Mantenimiento</h4>
-                        <p class="text-xs text-on-surface-variant">Limpieza técnica y desinfección de tanques elevados, cisternas y desagües.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @if(isset($services) && $services->count() > 0)
+            @foreach($services as $index => $service)
+                <div id="{{ $service->slug }}" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start scroll-mt-24">
+                    <!-- Left/Right layout based on index -->
+                    <div class="lg:col-span-6 space-y-6 {{ $index % 2 !== 0 ? 'lg:order-last' : '' }}">
+                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded">
+                            <span class="material-symbols-outlined text-primary text-4xl">
+                                {{ $service->icon ?? 'settings' }}
+                            </span>
+                        </div>
+                        <h2 class="font-headline-lg text-3xl font-bold text-slate-gray">{{ $service->name }}</h2>
+                        
+                        <div class="font-body-md text-on-surface-variant leading-relaxed text-justify space-y-4">
+                            {!! $service->description !!}
+                        </div>
 
-        <!-- 2. Instalaciones Eléctricas -->
-        <div id="electricas" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start scroll-mt-24">
-            <div class="lg:col-span-5 space-y-6 lg:order-last">
-                <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded">
-                    <span class="material-symbols-outlined text-primary text-4xl">bolt</span>
-                </div>
-                <h2 class="font-headline-lg text-3xl font-bold text-slate-gray">Instalaciones Eléctricas</h2>
-                <p class="font-body-md text-on-surface-variant leading-relaxed">
-                    Instalación de redes eléctricas seguras que garanticen el flujo de energía y protejan los artefactos y edificaciones de sobrecargas.
-                </p>
-                <div class="border-t border-border-gray pt-6">
-                    <a href="{{ url('/contacto') }}" class="inline-flex items-center gap-2 font-label-bold text-primary hover:opacity-80 transition-opacity">
-                        Solicitar cotización de eléctricas <span class="material-symbols-outlined">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-off-white border border-border-gray p-8 rounded-lg">
-                <h3 class="font-label-bold text-slate-gray uppercase tracking-wider mb-6 text-sm">Nuestro servicio incluye:</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Cableado General</h4>
-                        <p class="text-xs text-on-surface-variant">Tendido e instalación de redes internas/externas para hogares y oficinas.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Tableros Eléctricos</h4>
-                        <p class="text-xs text-on-surface-variant">Montaje y ordenamiento de llaves térmicas y diferenciales de protección.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Puestas a Tierra</h4>
-                        <p class="text-xs text-on-surface-variant">Diseño e instalación de pozos a tierra certificados bajo normativa vigente.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Iluminación</h4>
-                        <p class="text-xs text-on-surface-variant">Montaje de luminarias LED, reflectores de alta potencia y automatización.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <!-- Technical Specs and Norms (Valor Agregado) -->
+                        @if($service->technical_specs)
+                            <div class="border-t border-border-gray pt-6 mt-6">
+                                <h4 class="font-label-bold text-slate-gray uppercase tracking-wider mb-4 text-xs font-bold flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-primary">verified</span>
+                                    Valor Agregado y Normas Técnicas
+                                </h4>
+                                <div class="prose prose-sm max-w-none text-on-surface-variant leading-relaxed text-justify">
+                                    {!! $service->technical_specs !!}
+                                </div>
+                            </div>
+                        @endif
 
-        <!-- 3. Equipos de Bombeo -->
-        <div id="bombeo" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start scroll-mt-24">
-            <div class="lg:col-span-5 space-y-6">
-                <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded">
-                    <span class="material-symbols-outlined text-primary text-4xl">water_drop</span>
-                </div>
-                <h2 class="font-headline-lg text-3xl font-bold text-slate-gray">Equipos de Bombeo</h2>
-                <p class="font-body-md text-on-surface-variant leading-relaxed">
-                    Soluciones integrales de bombeo que aseguren la presión y caudal idóneos para el abastecimiento continuo de agua potable.
-                </p>
-                <div class="border-t border-border-gray pt-6">
-                    <a href="{{ url('/contacto') }}" class="inline-flex items-center gap-2 font-label-bold text-primary hover:opacity-80 transition-opacity">
-                        Solicitar cotización de bombeo <span class="material-symbols-outlined">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-off-white border border-border-gray p-8 rounded-lg">
-                <h3 class="font-label-bold text-slate-gray uppercase tracking-wider mb-6 text-sm">Nuestro servicio incluye:</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Electrobombas</h4>
-                        <p class="text-xs text-on-surface-variant">Instalación y mantenimiento de bombas sumergibles y centrífugas.</p>
+                        <div class="border-t border-border-gray pt-6 mt-6">
+                            <a href="{{ url('/contacto?subject=Consulta sobre ' . urlencode($service->name)) }}" class="inline-flex items-center gap-2 font-label-bold text-primary hover:opacity-80 transition-opacity">
+                                Solicitar cotización de {{ strtolower($service->name) }} <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                        </div>
                     </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Presión Constante</h4>
-                        <p class="text-xs text-on-surface-variant">Sistemas modernos con variadores de velocidad para optimizar el consumo de energía.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Tableros de Control</h4>
-                        <p class="text-xs text-on-surface-variant">Fabricación e instalación de tableros eléctricos para alternancia de bombas.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Automatización</h4>
-                        <p class="text-xs text-on-surface-variant">Sensores de nivel electrónicos que previenen el funcionamiento en seco de las bombas.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- 4. Bridas Rompeagua -->
-        <div id="bridas" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start scroll-mt-24">
-            <div class="lg:col-span-5 space-y-6 lg:order-last">
-                <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded">
-                    <span class="material-symbols-outlined text-primary text-4xl">settings_input_component</span>
-                </div>
-                <h2 class="font-headline-lg text-3xl font-bold text-slate-gray">Bridas Rompeagua</h2>
-                <p class="font-body-md text-on-surface-variant leading-relaxed">
-                    Servicio especializado de fabricación e instalación de bridas rompeagua para proyectos de saneamiento y almacenamiento hidráulico.
-                </p>
-                <div class="border-t border-border-gray pt-6">
-                    <a href="{{ url('/contacto') }}" class="inline-flex items-center gap-2 font-label-bold text-primary hover:opacity-80 transition-opacity">
-                        Solicitar cotización de bridas <span class="material-symbols-outlined">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-off-white border border-border-gray p-8 rounded-lg">
-                <h3 class="font-label-bold text-slate-gray uppercase tracking-wider mb-6 text-sm">Nuestro servicio incluye:</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Evaluación de Diseño</h4>
-                        <p class="text-xs text-on-surface-variant">Estudio técnico de presiones y espesores de muros para dimensionamiento.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Fabricación de Bridas</h4>
-                        <p class="text-xs text-on-surface-variant">Estructuras de acero de alta calidad con recubrimiento anticorrosivo.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Alineamiento</h4>
-                        <p class="text-xs text-on-surface-variant">Fijación de los elementos de pase previo al vaciado de concreto estructural.</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-gray flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Soldadura Especializada</h4>
-                        <p class="text-xs text-on-surface-variant">Juntas con soldadura hermética y pruebas rigurosas de estanqueidad.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <!-- Right/Left layout (Media & Attachments) -->
+                    <div class="lg:col-span-6 bg-off-white border border-border-gray p-8 rounded-lg space-y-6">
+                        <!-- Short summary -->
+                        @if($service->short_description)
+                            <div>
+                                <h3 class="font-label-bold text-slate-gray uppercase tracking-wider mb-2 text-xs font-bold">Enfoque Técnico</h3>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">{{ $service->short_description }}</p>
+                            </div>
+                        @endif
 
+                        <!-- Attachments (Buttons/HTML) -->
+                        @if($service->attachments && is_array($service->attachments) && count($service->attachments) > 0)
+                            <div class="border-t border-border-gray/50 pt-4">
+                                <h4 class="font-label-bold text-slate-gray uppercase tracking-wider mb-3 text-xs font-bold">Documentación y Descargas</h4>
+                                <div class="flex flex-col gap-2">
+                                    @foreach($service->attachments as $attach)
+                                        <a href="{{ asset('storage/' . $attach['file_path']) }}" target="_blank" download class="flex items-center justify-between bg-white border border-border-gray hover:border-primary px-4 py-3 rounded text-slate-gray hover:text-primary transition-all shadow-sm">
+                                            <span class="font-medium text-sm">{{ $attach['name'] }}</span>
+                                            <span class="material-symbols-outlined text-lg">download</span>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+
+                        <!-- Gallery -->
+                        @if($service->gallery && is_array($service->gallery) && count($service->gallery) > 0)
+                            <div class="border-t border-border-gray/50 pt-4">
+                                <h4 class="font-label-bold text-slate-gray uppercase tracking-wider mb-3 text-xs font-bold">Fotografías del Servicio</h4>
+                                <div class="grid grid-cols-2 gap-3">
+                                    @foreach($service->gallery as $img)
+                                        <a href="{{ asset('storage/' . $img) }}" target="_blank" class="aspect-[4/3] rounded overflow-hidden border border-border-gray block relative group">
+                                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white text-xl">zoom_in</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <p class="text-center text-outline">No hay servicios registrados.</p>
+        @endif
     </div>
 </section>
 @endsection

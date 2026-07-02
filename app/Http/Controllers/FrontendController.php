@@ -4,15 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Complaint;
+use App\Models\Banner;
+use App\Models\Service;
+use App\Models\Project;
+use App\Models\Post;
+use App\Models\Setting;
+use App\Mail\ContactReceivedMail;
+use App\Mail\ContactConfirmationMail;
+use App\Mail\ComplaintReceivedMail;
+use App\Mail\ComplaintConfirmationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $banners = Banner::where('is_active', true)->orderBy('order')->get();
+        $services = Service::where('is_active', true)->orderBy('order')->take(4)->get();
+        $featuredProjects = Project::where('is_active', true)->where('is_featured', true)->orderBy('order')->take(6)->get();
+
+        return view('welcome', compact('banners', 'services', 'featuredProjects'));
     }
 
     public function about()
@@ -22,17 +36,40 @@ class FrontendController extends Controller
 
     public function services()
     {
-        return view('frontend.services');
+        $services = Service::where('is_active', true)->orderBy('order')->get();
+        return view('frontend.services', compact('services'));
     }
 
     public function projects()
     {
-        return view('frontend.projects');
+        $projects = Project::where('is_active', true)->orderBy('order')->get();
+        return view('frontend.projects', compact('projects'));
     }
 
     public function blog()
     {
-        return view('frontend.blog');
+        $posts = Post::where('is_published', true)
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->paginate(6);
+
+        return view('frontend.blog', compact('posts'));
+    }
+
+    public function blogPost($slug)
+    {
+        $post = Post::where('slug', $slug)
+            ->where('is_published', true)
+            ->firstOrFail();
+
+        // Get 3 recent posts for sidebar/recommendations
+        $recentPosts = Post::where('is_published', true)
+            ->where('id', '!=', $post->id)
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('frontend.blog_post', compact('post', 'recentPosts'));
     }
 
     public function contact()
@@ -63,7 +100,7 @@ class FrontendController extends Controller
         $validated['message'] = htmlspecialchars(strip_tags($validated['message']), ENT_QUOTES, 'UTF-8');
 
         // Store
-        Contact::create([
+        $contact = Contact::create([
             'full_name' => $validated['full_name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
@@ -71,6 +108,19 @@ class FrontendController extends Controller
             'message' => $validated['message'],
             'is_read' => false,
         ]);
+
+        // Email dispatch
+        try {
+            $setting = Setting::first();
+            $receiver = $setting->contact_email_receiver ?? $setting->email ?? 'contacto@njconstructec.com';
+
+            if (filled($receiver)) {
+                Mail::to($receiver)->send(new ContactReceivedMail($contact));
+            }
+            Mail::to($contact->email)->send(new ContactConfirmationMail($contact, $setting ?? new Setting()));
+        } catch (\Throwable $e) {
+            Log::error('Error al enviar correo de contacto: ' . $e->getMessage());
+        }
 
         return redirect()->back()->with('success', '¡Gracias por contactarnos! Tu mensaje ha sido recibido con éxito y nos pondremos en contacto contigo a la brevedad.');
     }
@@ -149,7 +199,7 @@ class FrontendController extends Controller
         });
 
         // Store
-        Complaint::create([
+        $complaint = Complaint::create([
             'claim_number' => $claimNumber,
             'full_name' => $validated['full_name'],
             'document_type' => $validated['document_type'],
@@ -169,6 +219,19 @@ class FrontendController extends Controller
             'request' => $validated['request'],
             'status' => 'Pendiente',
         ]);
+
+        // Email dispatch
+        try {
+            $setting = Setting::first();
+            $receiver = $setting->contact_email_receiver ?? $setting->email ?? 'contacto@njconstructec.com';
+
+            if (filled($receiver)) {
+                Mail::to($receiver)->send(new ComplaintReceivedMail($complaint));
+            }
+            Mail::to($complaint->email)->send(new ComplaintConfirmationMail($complaint, $setting ?? new Setting()));
+        } catch (\Throwable $e) {
+            Log::error('Error al enviar copia de libro de reclamaciones: ' . $e->getMessage());
+        }
 
         return redirect()->back()->with('success_claim', "Su reclamación ha sido registrada exitosamente. Código de registro: {$claimNumber}");
     }

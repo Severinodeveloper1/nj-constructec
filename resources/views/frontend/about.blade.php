@@ -9,7 +9,7 @@
         <span class="font-label-bold text-primary uppercase tracking-widest text-sm font-semibold">Nuestra Historia</span>
         <h1 class="font-display-lg text-4xl md:text-display-lg font-bold text-slate-gray mt-2 mb-6">Quiénes Somos</h1>
         <p class="font-body-lg text-lg text-on-surface-variant max-w-3xl leading-relaxed">
-            En <strong>{{ $setting->name }}</strong> somos una empresa peruana con más de 18 años de experiencia brindando soluciones especializadas en ingeniería y construcción en edificaciones residenciales.
+            En <strong>{{ $setting->name }}</strong> somos una empresa peruana comprometida con brindar soluciones de excelencia en ingeniería y construcción en edificaciones residenciales.
         </p>
     </div>
 </section>
@@ -19,12 +19,18 @@
     <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
             <h2 class="font-headline-lg text-2xl md:text-headline-lg font-bold text-slate-gray">Trayectoria que genera Confianza</h2>
-            <p class="font-body-md text-on-surface-variant leading-relaxed text-justify">
-                A lo largo de casi dos décadas, hemos desarrollado y ejecutado soluciones eficientes y duraderas, ganándonos la confianza de nuestros clientes gracias a nuestro compromiso con la calidad, la puntualidad y el buen trabajo. Nos destacamos por ofrecer una garantía real en cada uno de nuestros trabajos y una atención personalizada.
-            </p>
-            <p class="font-body-md text-on-surface-variant leading-relaxed text-justify">
-                Utilizamos materiales de primera calidad y cumplimos estrictamente con las normativas técnicas vigentes para garantizar la máxima seguridad y durabilidad.
-            </p>
+            <div class="font-body-md text-on-surface-variant leading-relaxed text-justify space-y-4">
+                @if($setting->about_history)
+                    {!! nl2br(e($setting->about_history)) !!}
+                @else
+                    <p>
+                        A lo largo de casi dos décadas, hemos desarrollado y ejecutado soluciones eficientes y duraderas, ganándonos la confianza de nuestros clientes gracias a nuestro compromiso con la calidad, la puntualidad y el buen trabajo. Nos destacamos por ofrecer una garantía real en cada uno de nuestros trabajos y una atención personalizada.
+                    </p>
+                    <p>
+                        Utilizamos materiales de primera calidad y cumplimos estrictamente con las normativas técnicas vigentes para garantizar la máxima seguridad y durabilidad.
+                    </p>
+                @endif
+            </div>
             <div class="pt-4">
                 <a href="{{ url('/contacto') }}" class="inline-block bg-primary text-white px-8 py-3 rounded font-label-bold hover:opacity-90 transition-opacity">
                     Trabaja con Nosotros
@@ -75,7 +81,7 @@
                 </div>
                 <h2 class="font-headline-lg text-2xl font-bold mb-4 text-white">Misión</h2>
                 <p class="font-body-md text-surface-variant leading-relaxed text-justify">
-                    Brindar servicios con altos estándares de calidad, utilizando materiales confiables, personal capacitado y tecnología adecuada. Nos comprometemos a ofrecer soluciones eficientes, seguras y puntuales, que satisfagan plenamente las necesidades de nuestros clientes, manteniendo precios justos y competitivos en el mercado.
+                    {{ $setting->about_mission ?? 'Brindar servicios con altos estándares de calidad, utilizando materiales confiables, personal capacitado y tecnología adecuada. Nos comprometemos a ofrecer soluciones eficientes, seguras y puntuales, que satisfagan plenamente las necesidades de nuestros clientes.' }}
                 </p>
             </div>
         </div>
@@ -87,7 +93,7 @@
                 </div>
                 <h2 class="font-headline-lg text-2xl font-bold mb-4 text-white">Visión</h2>
                 <p class="font-body-md text-surface-variant leading-relaxed text-justify">
-                    Ser reconocidos a nivel nacional como una empresa líder destacando por nuestra trayectoria, responsabilidad, innovación constante y compromiso con la satisfacción del cliente. Aspiramos a seguir creciendo de manera sostenible, consolidando nuestra reputación como símbolo de confianza, calidad y eficiencia en el sector de la construcción.
+                    {{ $setting->about_vision ?? 'Ser reconocidos a nivel nacional como una empresa líder destacando por nuestra trayectoria, responsabilidad, innovación constante y compromiso con la satisfacción del cliente.' }}
                 </p>
             </div>
         </div>
@@ -103,48 +109,58 @@
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Responsabilidad -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">assignment_turned_in</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Responsabilidad</h3>
-                <p class="text-xs text-on-surface-variant">Cumplimos rigurosamente con nuestros compromisos y plazos pactados en cada obra.</p>
-            </div>
-            <!-- Honestidad -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">gavel</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Honestidad</h3>
-                <p class="text-xs text-on-surface-variant">Presupuestos transparentes y relaciones de confianza duraderas con el cliente.</p>
-            </div>
-            <!-- Calidad -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">workspace_premium</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Calidad</h3>
-                <p class="text-xs text-on-surface-variant">Utilizamos insumos garantizados y aplicamos altos estándares en cada detalle.</p>
-            </div>
-            <!-- Compromiso -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">handshake</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Compromiso</h3>
-                <p class="text-xs text-on-surface-variant">Nos involucramos al 100% para superar las expectativas de nuestros socios.</p>
-            </div>
-            <!-- Seguridad -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">health_and_safety</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Seguridad</h3>
-                <p class="text-xs text-on-surface-variant">Respetamos de forma estricta las normas de prevención de riesgos (SST).</p>
-            </div>
-            <!-- Trabajo en equipo -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">groups</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Trabajo en Equipo</h3>
-                <p class="text-xs text-on-surface-variant">Sinergia entre ingenieros, técnicos y operarios para el éxito del proyecto.</p>
-            </div>
-            <!-- Innovación -->
-            <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl mb-4">lightbulb</span>
-                <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Innovación</h3>
-                <p class="text-xs text-on-surface-variant">Búsqueda continua de mejores tecnologías hidráulicas y de construcción.</p>
-            </div>
+            @if(isset($setting->about_values) && is_array($setting->about_values) && count($setting->about_values) > 0)
+                @foreach($setting->about_values as $val)
+                    <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-primary text-3xl mb-4">
+                            {{ $val['icon'] ?? 'star' }}
+                        </span>
+                        <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">
+                            {{ $val['title'] }}
+                        </h3>
+                        <p class="text-xs text-on-surface-variant">
+                            {{ $val['description'] }}
+                        </p>
+                    </div>
+                @endforeach
+            @else
+                <!-- Fallback 7 values -->
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">assignment_turned_in</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Responsabilidad</h3>
+                    <p class="text-xs text-on-surface-variant">Cumplimos rigurosamente con nuestros compromisos y plazos pactados en cada obra.</p>
+                </div>
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">gavel</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Honestidad</h3>
+                    <p class="text-xs text-on-surface-variant">Presupuestos transparentes y relaciones de confianza duraderas con el cliente.</p>
+                </div>
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">workspace_premium</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Calidad</h3>
+                    <p class="text-xs text-on-surface-variant">Utilizamos insumos garantizados y aplicamos altos estándares en cada detalle.</p>
+                </div>
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">handshake</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Compromiso</h3>
+                    <p class="text-xs text-on-surface-variant">Nos involucramos al 100% para superar las expectativas de nuestros socios.</p>
+                </div>
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">health_and_safety</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Seguridad</h3>
+                    <p class="text-xs text-on-surface-variant">Respetamos de forma estricta las normas de prevención de riesgos (SST).</p>
+                </div>
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">groups</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Trabajo en Equipo</h3>
+                    <p class="text-xs text-on-surface-variant">Sinergia entre ingenieros, técnicos y operarios para el éxito del proyecto.</p>
+                </div>
+                <div class="p-6 bg-off-white border border-border-gray rounded-lg hover:border-primary transition-all">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-4">lightbulb</span>
+                    <h3 class="font-headline-md text-lg font-bold text-slate-gray mb-2">Innovación</h3>
+                    <p class="text-xs text-on-surface-variant">Búsqueda continua de mejores tecnologías hidráulicas y de construcción.</p>
+                </div>
+            @endif
         </div>
     </div>
 </section>
