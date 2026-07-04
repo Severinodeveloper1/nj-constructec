@@ -67,7 +67,7 @@
                 <a class="font-label-bold text-label-bold {{ Request::is('servicios*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all" href="{{ url('/servicios') }}">Servicios</a>
                 <a class="font-label-bold text-label-bold {{ Request::is('nosotros*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all" href="{{ url('/nosotros') }}">Quiénes Somos</a>
                 <a class="font-label-bold text-label-bold {{ Request::is('proyectos*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all" href="{{ url('/proyectos') }}">Proyectos</a>
-                <a class="font-label-bold text-label-bold {{ Request::is('blog*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all" href="{{ url('/blog') }}">Insights</a>
+                <a class="font-label-bold text-label-bold {{ Request::is('blog*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all" href="{{ url('/blog') }}">Blog</a>
                 <a class="font-label-bold text-label-bold {{ Request::is('contacto*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all" href="{{ url('/contacto') }}">Contacto</a>
             </nav>
 
@@ -95,7 +95,7 @@
                 <a class="font-label-bold text-lg {{ Request::is('servicios*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/servicios') }}">Servicios</a>
                 <a class="font-label-bold text-lg {{ Request::is('nosotros*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/nosotros') }}">Quiénes Somos</a>
                 <a class="font-label-bold text-lg {{ Request::is('proyectos*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/proyectos') }}">Proyectos</a>
-                <a class="font-label-bold text-lg {{ Request::is('blog*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/blog') }}">Insights</a>
+                <a class="font-label-bold text-lg {{ Request::is('blog*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/blog') }}">Blog</a>
                 <a class="font-label-bold text-lg {{ Request::is('contacto*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}" href="{{ url('/contacto') }}">Contacto</a>
                 @if($setting->brochure_path)
                     <a href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download class="font-label-bold text-lg text-primary flex items-center gap-1">
