@@ -10,6 +10,8 @@
     
     <title>@yield('title', $setting->name . ' | Expertos en Instalaciones y Construcción')</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +60,7 @@
                 @if($setting->logo_path)
                     <img alt="{{ $setting->name }} Logo" class="h-10 w-auto object-contain" src="{{ asset('storage/' . $setting->logo_path) }}" />
                 @else
-                    <img alt="NJ CONSTRUCTEC Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbAlui0vuijjBiab9iVXnQ3wGPKVX02Oj3SUEgPWYOY0d5jtlPBSGlS6QyucLOLmw8TurjoXY3KuQZpQKhwWIhZADuoE97bE3K2lyivgS9LzzDibtDmbIs0m_Me3U6UT7IzG9l4zNkiwOexzZUSRUNPMh75pwIeQC1PSqGZS_jkrUystNo5UKaNZnPkm0jfD3wd4LXQ-85CrIgg7QtOvql5v7ou3y0L9EZ-cn1bLPWhrfP94gUyKeHDpQc_n0Af43b20btCf-Gfwal"/>
+                    <img alt="NJ CONSTRUCTEC Logo" class="h-10 w-auto object-contain" src="{{ asset('img/logo.png') }}"/>
                 @endif
                 <span class="font-headline-md text-xl md:text-headline-md font-bold text-slate-gray">{{ $setting->name }}</span>
             </a>
@@ -121,7 +123,7 @@
                     @if($setting->logo_path)
                         <img alt="{{ $setting->name }} Logo" class="h-8 w-auto invert grayscale object-contain" src="{{ asset('storage/' . $setting->logo_path) }}"/>
                     @else
-                        <img alt="NJ Logo White" class="h-8 w-auto invert grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbAlui0vuijjBiab9iVXnQ3wGPKVX02Oj3SUEgPWYOY0d5jtlPBSGlS6QyucLOLmw8TurjoXY3KuQZpQKhwWIhZADuoE97bE3K2lyivgS9LzzDibtDmbIs0m_Me3U6UT7IzG9l4zNkiwOexzZUSRUNPMh75pwIeQC1PSqGZS_jkrUystNo5UKaNZnPkm0jfD3wd4LXQ-85CrIgg7QtOvql5v7ou3y0L9EZ-cn1bLPWhrfP94gUyKeHDpQc_n0Af43b20btCf-Gfwal"/>
+                        <img alt="NJ Logo White" class="h-8 w-auto invert grayscale" src="{{ asset('img/logo.png') }}"/>
                     @endif
                     <span class="font-headline-md text-xl text-off-white font-bold">{{ $setting->name }}</span>
                 </div>
