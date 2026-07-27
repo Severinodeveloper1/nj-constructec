@@ -230,20 +230,18 @@
 @endif
 
 <!-- Brochure PDF Download Banner -->
-@if($setting->brochure_path)
-    <section class="py-16 bg-primary text-white">
-        <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="max-w-2xl">
-                <h3 class="font-display-lg text-2xl md:text-3xl font-bold mb-2">Descargue nuestro Brochure Corporativo</h3>
-                <p class="text-off-white">Conozca en detalle nuestra capacidad técnica, equipamiento y el catálogo de proyectos desarrollados en ingeniería hidráulica y eléctrica.</p>
-            </div>
-            <a href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download class="bg-white text-primary px-8 py-4 rounded font-label-bold text-lg hover:bg-off-white transition-colors flex items-center gap-2 shadow-lg shrink-0">
-                Descargar Brochure PDF
-                <span class="material-symbols-outlined">download</span>
-            </a>
+<section class="py-16 bg-primary text-white">
+    <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="max-w-2xl">
+            <h3 class="font-display-lg text-2xl md:text-3xl font-bold mb-2">Descargue nuestro Brochure Corporativo</h3>
+            <p class="text-off-white">Conozca en detalle nuestra capacidad técnica, equipamiento y el catálogo de proyectos desarrollados en ingeniería hidráulica y eléctrica.</p>
         </div>
-    </section>
-@endif
+        <a href="{{ $setting->brochure_path ? asset('storage/' . $setting->brochure_path) : asset('brochure-corporativo.pdf') }}" target="_blank" download class="bg-white text-primary px-8 py-4 rounded font-label-bold text-lg hover:bg-off-white transition-colors flex items-center gap-2 shadow-lg shrink-0">
+            Descargar Brochure PDF
+            <span class="material-symbols-outlined">download</span>
+        </a>
+    </div>
+</section>
 
 <!-- Contact form section -->
 <section class="py-24 bg-off-white">

@@ -82,6 +82,8 @@
             </a>
 
             <nav class="hidden md:flex items-center gap-8">
+                <a class="font-label-bold text-label-bold {{ Request::is('/') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all"
+                    href="{{ url('/') }}">Inicio</a>
                 <a class="font-label-bold text-label-bold {{ Request::is('servicios*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all"
                     href="{{ url('/servicios') }}">Servicios</a>
                 <a class="font-label-bold text-label-bold {{ Request::is('nosotros*') ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant hover:text-primary' }} transition-all"
@@ -117,6 +119,8 @@
                 </button>
             </div>
             <nav class="flex flex-col gap-6 p-6">
+                <a class="font-label-bold text-lg {{ Request::is('/') ? 'text-primary font-bold' : 'text-on-surface-variant' }}"
+                    href="{{ url('/') }}">Inicio</a>
                 <a class="font-label-bold text-lg {{ Request::is('servicios*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}"
                     href="{{ url('/servicios') }}">Servicios</a>
                 <a class="font-label-bold text-lg {{ Request::is('nosotros*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}"
@@ -127,12 +131,10 @@
                     href="{{ url('/blog') }}">Blog</a>
                 <a class="font-label-bold text-lg {{ Request::is('contacto*') ? 'text-primary font-bold' : 'text-on-surface-variant' }}"
                     href="{{ url('/contacto') }}">Contacto</a>
-                @if ($setting->brochure_path)
-                    <a href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download
-                        class="font-label-bold text-lg text-primary flex items-center gap-1">
-                        Descargar Brochure <span class="material-symbols-outlined text-sm">download</span>
-                    </a>
-                @endif
+                <a href="{{ $setting->brochure_path ? asset('storage/' . $setting->brochure_path) : asset('brochure-corporativo.pdf') }}" target="_blank" download
+                    class="font-label-bold text-lg text-primary flex items-center gap-1">
+                    Descargar Brochure <span class="material-symbols-outlined text-sm">download</span>
+                </a>
                 <a href="{{ url('/contacto') }}"
                     class="bg-primary text-on-primary text-center py-3 rounded font-label-bold mt-4">
                     Cotizar Proyecto
@@ -147,7 +149,7 @@
 
     <!-- Footer -->
     <footer class="w-full py-12 bg-slate-gray text-off-white border-t border-outline mt-auto">
-        <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+        <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
             <div class="flex flex-col gap-4">
                 <div class="flex items-center gap-2">
                     @if ($setting->logo_path)
@@ -211,14 +213,10 @@
                             href="{{ url('/nosotros#mision-vision') }}">Misión y Visión</a></li>
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors"
                             href="{{ url('/nosotros#valores') }}">Nuestros Valores</a></li>
-                    @if ($setting->brochure_path)
-                        <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors flex items-center gap-1"
-                                href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank"
-                                download>Descargar Brochure <span
-                                    class="material-symbols-outlined text-xs">download</span></a></li>
-                    @endif
-                    <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors text-yellow-500 font-semibold"
-                            href="{{ url('/libro-reclamaciones') }}">📙 Libro de Reclamaciones</a></li>
+                    <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors flex items-center gap-1"
+                            href="{{ $setting->brochure_path ? asset('storage/' . $setting->brochure_path) : asset('brochure-corporativo.pdf') }}" target="_blank"
+                            download>Descargar Brochure <span
+                                class="material-symbols-outlined text-xs">download</span></a></li>
                 </ul>
             </div>
 
@@ -226,13 +224,13 @@
                 <span class="font-label-bold text-label-bold text-white uppercase">Servicios</span>
                 <ul class="space-y-2">
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors"
-                            href="{{ url('/servicios') }}">Instalaciones Sanitarias</a></li>
+                            href="{{ url('/servicios#instalaciones-sanitarias') }}">Instalaciones Sanitarias</a></li>
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors"
-                            href="{{ url('/servicios') }}">Instalaciones Eléctricas</a></li>
+                            href="{{ url('/servicios#instalaciones-electricas') }}">Instalaciones Eléctricas</a></li>
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors"
-                            href="{{ url('/servicios') }}">Equipos de Bombeo</a></li>
+                            href="{{ url('/servicios#equipos-de-bombeo') }}">Equipos de Bombeo</a></li>
                     <li><a class="font-body-sm text-outline-variant hover:text-off-white transition-colors"
-                            href="{{ url('/servicios') }}">Bridas Rompeagua</a></li>
+                            href="{{ url('/servicios#bridas-rompeagua') }}">Bridas Rompeagua</a></li>
                 </ul>
             </div>
 
@@ -243,10 +241,16 @@
                     <strong>Teléfono:</strong> {{ $setting->phone }}<br>
                     <strong>Email:</strong> {{ $setting->email }}
                 </p>
+                <div class="mt-2">
+                    <a class="font-body-sm text-yellow-500 hover:text-yellow-400 transition-colors font-semibold flex items-center gap-1.5"
+                        href="{{ url('/libro-reclamaciones') }}">
+                        <span>📙</span> Libro de Reclamaciones
+                    </a>
+                </div>
             </div>
 
             <div
-                class="col-span-1 md:col-span-4 pt-8 mt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                class="col-span-1 sm:col-span-2 lg:col-span-4 pt-8 mt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="font-body-sm text-body-sm text-outline-variant">
                     © 2026 {{ $setting->name }}. Todos los derechos reservados.
                 </p>

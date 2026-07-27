@@ -51,24 +51,22 @@
                     <p class="font-body-md text-slate-gray">{{ $setting->address }}</p>
                 </div>
 
-                @if($setting->brochure_path)
-                    <div class="bg-surface-container border border-border-gray p-6 rounded-lg flex items-center justify-between gap-4 mt-6">
-                        <div class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-primary text-4xl">download_for_offline</span>
-                            <div>
-                                <h4 class="font-bold text-slate-gray text-sm">Brochure Corporativo</h4>
-                                <p class="text-[11px] text-on-surface-variant">Conozca nuestra trayectoria y capacidades.</p>
-                            </div>
+                <div class="bg-surface-container border border-border-gray p-6 rounded-lg flex items-center justify-between gap-4 mt-6">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-4xl">download_for_offline</span>
+                        <div>
+                            <h4 class="font-bold text-slate-gray text-sm">Brochure Corporativo</h4>
+                            <p class="text-[11px] text-on-surface-variant">Conozca nuestra trayectoria y capacidades.</p>
                         </div>
-                        <a href="{{ asset('storage/' . $setting->brochure_path) }}" target="_blank" download class="bg-primary text-white px-4 py-2.5 rounded font-label-bold text-xs hover:opacity-90 transition-opacity flex items-center gap-1">
-                            Descargar
-                            <span class="material-symbols-outlined text-sm">download</span>
-                        </a>
                     </div>
-                @endif
+                    <a href="{{ $setting->brochure_path ? asset('storage/' . $setting->brochure_path) : asset('brochure-corporativo.pdf') }}" target="_blank" download class="bg-primary text-white px-4 py-2.5 rounded font-label-bold text-xs hover:opacity-90 transition-opacity flex items-center gap-1">
+                        Descargar
+                        <span class="material-symbols-outlined text-sm">download</span>
+                    </a>
+                </div>
 
                 @if($setting->maps_iframe)
-                    <div class="min-h-[300px] bg-blueprint-bg rounded border border-border-gray overflow-hidden">
+                    <div class="min-h-[300px] bg-blueprint-bg rounded border border-border-gray overflow-hidden [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:min-h-[300px] [&>iframe]:border-0">
                         {!! $setting->maps_iframe !!}
                     </div>
                 @endif
@@ -104,32 +102,46 @@
                     <div class="flex flex-col gap-2">
                         <label class="font-label-bold text-body-sm text-slate-gray font-bold">Nombres y Apellidos</label>
                         <input class="w-full bg-white border border-border-gray rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                               name="full_name" placeholder="Ingrese su nombre completo" type="text" value="{{ old('full_name') }}" required />
+                               name="full_name" placeholder="Ingrese su nombre completo" type="text" value="{{ old('full_name') }}" maxlength="255" required />
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-2">
                             <label class="font-label-bold text-body-sm text-slate-gray font-bold">Correo Electrónico</label>
                             <input class="w-full bg-white border border-border-gray rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                                   name="email" placeholder="correo@ejemplo.com" type="email" value="{{ old('email') }}" required />
+                                   name="email" placeholder="correo@ejemplo.com" type="email" value="{{ old('email') }}" maxlength="255" required />
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="font-label-bold text-body-sm text-slate-gray font-bold">Teléfono / Celular</label>
                             <input class="w-full bg-white border border-border-gray rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                                   name="phone" placeholder="Ej: 999999999" type="text" value="{{ old('phone') }}" />
+                                   name="phone" placeholder="Ej: +51 999 999 999" type="tel" value="{{ old('phone') }}" maxlength="30" pattern="[0-9\s\-\+\(\)]*" title="Ingrese solo números y símbolos de teléfono (+ - ( ))" />
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="font-label-bold text-body-sm text-slate-gray font-bold">Asunto</label>
-                        <input class="w-full bg-white border border-border-gray rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                               name="subject" placeholder="Ej: Cotización de servicios sanitarios / Consulta" type="text" value="{{ old('subject') }}" required />
+                        <label class="font-label-bold text-body-sm text-slate-gray font-bold">Servicio de Interés</label>
+                        @php
+                            $activeServices = \App\Models\Service::where('is_active', true)->orderBy('order')->get();
+                        @endphp
+                        <select class="w-full bg-white border border-border-gray rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all cursor-pointer" 
+                                name="subject" required>
+                            <option value="" disabled {{ old('subject') ? '' : 'selected' }}>Seleccione un servicio...</option>
+                            @foreach($activeServices as $service)
+                                <option value="Consulta sobre {{ $service->name }}" {{ old('subject') == "Consulta sobre {$service->name}" ? 'selected' : '' }}>
+                                    {{ $service->name }}
+                                </option>
+                            @endforeach
+                            <option value="Otra consulta" {{ old('subject') == 'Otra consulta' ? 'selected' : '' }}>Otra consulta / Otros servicios</option>
+                        </select>
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="font-label-bold text-body-sm text-slate-gray font-bold">Mensaje</label>
+                        <div class="flex justify-between items-center">
+                            <label class="font-label-bold text-body-sm text-slate-gray font-bold">Mensaje</label>
+                            <span id="char-counter" class="text-xs text-outline">0 / 5000</span>
+                        </div>
                         <textarea class="w-full bg-white border border-border-gray rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                                  name="message" placeholder="Escriba aquí los detalles de su consulta técnica o solicitud de cotización..." rows="5" required>{{ old('message') }}</textarea>
+                                  name="message" placeholder="Escriba aquí los detalles de su consulta técnica o solicitud de cotización..." rows="5" maxlength="5000" required>{{ old('message') }}</textarea>
                     </div>
 
                     <button class="w-full bg-primary text-white py-4 font-label-bold rounded hover:opacity-90 transition-all shadow-md active:scale-95" type="submit">
@@ -141,4 +153,25 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const phoneInput = document.querySelector('input[name="phone"]');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9\s\-\+\(\)]/g, '');
+        });
+    }
+
+    const messageTextarea = document.querySelector('textarea[name="message"]');
+    const charCounter = document.getElementById('char-counter');
+    if (messageTextarea && charCounter) {
+        const updateCounter = () => {
+            charCounter.textContent = `${messageTextarea.value.length} / 5000`;
+        };
+        messageTextarea.addEventListener('input', updateCounter);
+        updateCounter(); // Initialize
+    }
+});
+</script>
 @endsection

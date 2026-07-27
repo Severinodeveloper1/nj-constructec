@@ -72,7 +72,7 @@
                 <div class="flex flex-col gap-2">
                     <label class="font-label-bold text-body-sm text-slate-gray font-bold">Nombres y Apellidos</label>
                     <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                           name="full_name" placeholder="Ej: Juan Pérez" type="text" value="{{ old('full_name') }}" required />
+                           name="full_name" placeholder="Ej: Juan Pérez" type="text" value="{{ old('full_name') }}" maxlength="255" required />
                 </div>
                 
                 <div class="grid grid-cols-3 gap-2">
@@ -89,41 +89,41 @@
                     <div class="flex flex-col gap-2 col-span-2">
                         <label class="font-label-bold text-body-sm text-slate-gray font-bold">Nro. Documento</label>
                         <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                               name="document_number" placeholder="Número" type="text" value="{{ old('document_number') }}" required />
+                               name="document_number" placeholder="Número" type="text" value="{{ old('document_number') }}" maxlength="20" required />
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label class="font-label-bold text-body-sm text-slate-gray font-bold">Correo Electrónico</label>
                     <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                           name="email" placeholder="correo@ejemplo.com" type="email" value="{{ old('email') }}" required />
+                           name="email" placeholder="correo@ejemplo.com" type="email" value="{{ old('email') }}" maxlength="255" required />
                 </div>
                 <div class="flex flex-col gap-2">
                     <label class="font-label-bold text-body-sm text-slate-gray font-bold">Teléfono / Celular</label>
                     <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                           name="phone" placeholder="Ej: 999999999" type="tel" value="{{ old('phone') }}" required />
+                           name="phone" placeholder="Ej: +51 999 999 999" type="tel" value="{{ old('phone') }}" maxlength="30" pattern="[0-9\s\-\+\(\)]*" title="Ingrese solo números y símbolos de teléfono (+ - ( ))" required />
                 </div>
                 <div class="md:col-span-2 flex flex-col gap-2">
                     <label class="font-label-bold text-body-sm text-slate-gray font-bold">Dirección de Domicilio</label>
                     <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                           name="address" placeholder="Av. Principal 123, Urb. Los Jardines" type="text" value="{{ old('address') }}" required />
+                           name="address" placeholder="Av. Principal 123, Urb. Los Jardines" type="text" value="{{ old('address') }}" maxlength="255" required />
                 </div>
 
                 <div class="grid grid-cols-3 gap-4 md:col-span-2">
                     <div class="flex flex-col gap-2">
                         <label class="font-label-bold text-body-sm text-slate-gray font-bold">Departamento</label>
                         <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                               name="department" placeholder="Lima" type="text" value="{{ old('department') }}" />
+                               name="department" placeholder="Lima" type="text" value="{{ old('department') }}" maxlength="100" />
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="font-label-bold text-body-sm text-slate-gray font-bold">Provincia</label>
                         <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                               name="province" placeholder="Lima" type="text" value="{{ old('province') }}" />
+                               name="province" placeholder="Lima" type="text" value="{{ old('province') }}" maxlength="100" />
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="font-label-bold text-body-sm text-slate-gray font-bold">Distrito</label>
                         <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                               name="district" placeholder="Miraflores" type="text" value="{{ old('district') }}" />
+                               name="district" placeholder="Miraflores" type="text" value="{{ old('district') }}" maxlength="100" />
                     </div>
                 </div>
 
@@ -176,7 +176,7 @@
                 <div class="md:col-span-2 flex flex-col gap-2">
                     <label class="font-label-bold text-body-sm text-slate-gray font-bold">Descripción del Bien Contratado</label>
                     <input class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                           name="good_description" placeholder="Ej: Obra de instalaciones sanitarias de agua fría / Compra de llaves térmicas" type="text" value="{{ old('good_description') }}" required />
+                           name="good_description" placeholder="Ej: Obra de instalaciones sanitarias de agua fría / Compra de llaves térmicas" type="text" value="{{ old('good_description') }}" maxlength="1000" required />
                 </div>
             </div>
         </section>
@@ -210,15 +210,21 @@
                 </div>
 
                 <div class="flex flex-col gap-2">
-                    <label class="font-label-bold text-body-sm text-slate-gray font-bold">Detalle del Reclamo o Queja (Descripción del Suceso)</label>
+                    <div class="flex justify-between items-center">
+                        <label class="font-label-bold text-body-sm text-slate-gray font-bold">Detalle del Reclamo o Queja (Descripción del Suceso)</label>
+                        <span id="incident-counter" class="text-xs text-outline font-normal">0 / 5000</span>
+                    </div>
                     <textarea class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                              name="incident_description" placeholder="Describa detalladamente lo sucedido con el servicio o producto..." rows="5" required>{{ old('incident_description') }}</textarea>
+                              name="incident_description" placeholder="Describa detalladamente lo sucedido con el servicio o producto..." rows="5" maxlength="5000" required>{{ old('incident_description') }}</textarea>
                 </div>
                 
                 <div class="flex flex-col gap-2">
-                    <label class="font-label-bold text-body-sm text-slate-gray font-bold">Pedido del Consumidor (Solicitud o Pedido)</label>
+                    <div class="flex justify-between items-center">
+                        <label class="font-label-bold text-body-sm text-slate-gray font-bold">Pedido del Consumidor (Solicitud o Pedido)</label>
+                        <span id="request-counter" class="text-xs text-outline font-normal">0 / 5000</span>
+                    </div>
                     <textarea class="w-full bg-off-white border-border-gray border rounded p-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
-                              name="request" placeholder="Escriba de forma clara qué es lo que solicita para solucionar este inconveniente..." rows="3" required>{{ old('request') }}</textarea>
+                              name="request" placeholder="Escriba de forma clara qué es lo que solicita para solucionar este inconveniente..." rows="3" maxlength="5000" required>{{ old('request') }}</textarea>
                 </div>
             </div>
         </section>
@@ -243,4 +249,36 @@
         </div>
     </form>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const phoneInput = document.querySelector('input[name="phone"]');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9\s\-\+\(\)]/g, '');
+        });
+    }
+
+    // Live char counters
+    const incidentTextarea = document.querySelector('textarea[name="incident_description"]');
+    const incidentCounter = document.getElementById('incident-counter');
+    if (incidentTextarea && incidentCounter) {
+        const updateCounter = () => {
+            incidentCounter.textContent = `${incidentTextarea.value.length} / 5000`;
+        };
+        incidentTextarea.addEventListener('input', updateCounter);
+        updateCounter();
+    }
+
+    const requestTextarea = document.querySelector('textarea[name="request"]');
+    const requestCounter = document.getElementById('request-counter');
+    if (requestTextarea && requestCounter) {
+        const updateCounter = () => {
+            requestCounter.textContent = `${requestTextarea.value.length} / 5000`;
+        };
+        requestTextarea.addEventListener('input', updateCounter);
+        updateCounter();
+    }
+});
+</script>
 @endsection
