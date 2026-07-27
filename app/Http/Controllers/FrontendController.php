@@ -31,7 +31,9 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('frontend.about');
+        $team = \App\Models\TeamMember::where('is_active', true)->orderBy('order')->get();
+        $partners = \App\Models\Partner::where('is_active', true)->orderBy('order')->get();
+        return view('frontend.about', compact('team', 'partners'));
     }
 
     public function services()

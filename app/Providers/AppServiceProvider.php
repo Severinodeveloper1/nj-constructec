@@ -32,6 +32,16 @@ class AppServiceProvider extends ServiceProvider
                         'instagram_url' => 'https://instagram.com',
                         'tiktok_url' => 'https://tiktok.com',
                         'youtube_url' => 'https://youtube.com',
+                        'about_banner_badge' => 'ESTABLECIDOS EN 2006',
+                        'about_banner_title' => 'Expertos en instalaciones y mantenimiento para los sectores residencial, comercial e industrial.',
+                        'about_metric_1_value' => '18+',
+                        'about_metric_1_label' => 'Años de Trayectoria',
+                        'about_metric_2_value' => '100%',
+                        'about_metric_2_label' => 'Garantía Real',
+                        'about_metric_3_value' => '20+',
+                        'about_metric_3_label' => 'Técnicos Capacitados',
+                        'about_metric_4_value' => '1k+',
+                        'about_metric_4_label' => 'Clientes Satisfechos',
                     ];
                     foreach ($defaults as $key => $val) {
                         if (is_null($setting->{$key}) || $setting->{$key} === '' || $setting->{$key} === 'Mi Empresa') {
@@ -55,6 +65,16 @@ class AppServiceProvider extends ServiceProvider
             'instagram_url' => 'https://instagram.com',
             'tiktok_url' => 'https://tiktok.com',
             'youtube_url' => 'https://youtube.com',
+            'about_banner_badge' => 'ESTABLECIDOS EN 2006',
+            'about_banner_title' => 'Expertos en instalaciones y mantenimiento para los sectores residencial, comercial e industrial.',
+            'about_metric_1_value' => '18+',
+            'about_metric_1_label' => 'Años de Trayectoria',
+            'about_metric_2_value' => '100%',
+            'about_metric_2_label' => 'Garantía Real',
+            'about_metric_3_value' => '20+',
+            'about_metric_3_label' => 'Técnicos Capacitados',
+            'about_metric_4_value' => '1k+',
+            'about_metric_4_label' => 'Clientes Satisfechos',
         ]));
     }
 }

@@ -35,6 +35,17 @@ class Setting extends Model implements Auditable
         'pilar_2_desc',
         'pilar_3_title',
         'pilar_3_desc',
+        'about_banner_path',
+        'about_banner_badge',
+        'about_banner_title',
+        'about_metric_1_value',
+        'about_metric_1_label',
+        'about_metric_2_value',
+        'about_metric_2_label',
+        'about_metric_3_value',
+        'about_metric_3_label',
+        'about_metric_4_value',
+        'about_metric_4_label',
     ];
 
     protected $casts = [

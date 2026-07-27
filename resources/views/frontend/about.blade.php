@@ -7,7 +7,7 @@
     <section class="relative min-h-[500px] md:min-h-[614px] flex items-center bg-slate-gray overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-40">
             <div class="w-full h-full bg-cover bg-center"
-                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzhJtCmjgsb2GKOmhjtf20OJkFTduccX1JVKOts0uAQe-4HUnRg-YLQF9geFbVlg5MPgFUUaxaPlbuMyl3yXX_tx_f79UmiXO4wgYNhub1ZJjp5sTUN5aChKdSoMyh_RmJqmfALegWPC7suH1q3GSTv2FjVrOJZ-ZQE71l_Ww4oSU50vNOpeU_vAvrjuMEeWV_s6LatGn68g-siZvaEafzZWjr9etNBcSZ-qO7YSUDDa5E6V1UbWgzRMwaqzHIsOiFLvcmIwVmCl7s');"
+                style="background-image: url('{{ $setting->about_banner_path ? asset('storage/' . $setting->about_banner_path) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuAzhJtCmjgsb2GKOmhjtf20OJkFTduccX1JVKOts0uAQe-4HUnRg-YLQF9geFbVlg5MPgFUUaxaPlbuMyl3yXX_tx_f79UmiXO4wgYNhub1ZJjp5sTUN5aChKdSoMyh_RmJqmfALegWPC7suH1q3GSTv2FjVrOJZ-ZQE71l_Ww4oSU50vNOpeU_vAvrjuMEeWV_s6LatGn68g-siZvaEafzZWjr9etNBcSZ-qO7YSUDDa5E6V1UbWgzRMwaqzHIsOiFLvcmIwVmCl7s' }}');"
                 data-alt="Fotografía profesional de un sitio de construcción moderno al atardecer, destacando vigas de acero estructural, cimientos de concreto y equipos de ingeniería precisos.">
             </div>
         </div>
@@ -15,16 +15,11 @@
             <div class="max-w-2xl text-left">
                 <span
                     class="inline-block px-3 py-1 bg-primary text-on-primary font-label-bold text-label-bold mb-6 rounded-sm">
-                    ESTABLECIDOS EN 2006
+                    {{ $setting->about_banner_badge ?? 'ESTABLECIDOS EN 2006' }}
                 </span>
                 <h1 class="font-display-lg text-display-lg text-off-white mb-6 leading-tight font-bold">
-                    Expertos en instalaciones y mantenimiento para los sectores residencial, comercial e industrial.
+                    {{ $setting->about_banner_title ?? 'Expertos en instalaciones y mantenimiento para los sectores residencial, comercial e industrial.' }}
                 </h1>
-                {{-- <p class="font-body-lg text-body-lg text-surface-variant leading-relaxed mb-8">
-                    <strong>{{ $setting->name }}</strong> es una empresa peruana comprometida con brindar soluciones de
-                    excelencia en ingeniería y construcción, especializada en instalaciones sanitarias, eléctricas y equipos
-                    de bombeo en edificaciones residenciales con más de 18 años de experiencia.
-                </p> --}}
                 <div class="flex flex-wrap gap-6">
                     <div class="flex items-center gap-2 text-off-white">
                         <span class="material-symbols-outlined text-primary">verified</span>
@@ -78,29 +73,29 @@
                 <div class="p-6 bg-off-white border border-border-gray rounded flex flex-col justify-between">
                     <span class="material-symbols-outlined text-primary text-4xl mb-4">history</span>
                     <div>
-                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">18+</h3>
-                        <p class="text-xs font-bold text-outline uppercase tracking-wider">Años de Trayectoria</p>
+                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">{{ $setting->about_metric_1_value ?? '18+' }}</h3>
+                        <p class="text-xs font-bold text-outline uppercase tracking-wider">{{ $setting->about_metric_1_label ?? 'Años de Trayectoria' }}</p>
                     </div>
                 </div>
                 <div class="p-6 bg-off-white border border-border-gray rounded flex flex-col justify-between">
                     <span class="material-symbols-outlined text-primary text-4xl mb-4">task_alt</span>
                     <div>
-                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">100%</h3>
-                        <p class="text-xs font-bold text-outline uppercase tracking-wider">Garantía Real</p>
+                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">{{ $setting->about_metric_2_value ?? '100%' }}</h3>
+                        <p class="text-xs font-bold text-outline uppercase tracking-wider">{{ $setting->about_metric_2_label ?? 'Garantía Real' }}</p>
                     </div>
                 </div>
                 <div class="p-6 bg-off-white border border-border-gray rounded flex flex-col justify-between">
                     <span class="material-symbols-outlined text-primary text-4xl mb-4">engineering</span>
                     <div>
-                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">20+</h3>
-                        <p class="text-xs font-bold text-outline uppercase tracking-wider">Técnicos Capacitados</p>
+                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">{{ $setting->about_metric_3_value ?? '20+' }}</h3>
+                        <p class="text-xs font-bold text-outline uppercase tracking-wider">{{ $setting->about_metric_3_label ?? 'Técnicos Capacitados' }}</p>
                     </div>
                 </div>
                 <div class="p-6 bg-off-white border border-border-gray rounded flex flex-col justify-between">
                     <span class="material-symbols-outlined text-primary text-4xl mb-4">thumb_up</span>
                     <div>
-                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">1k+</h3>
-                        <p class="text-xs font-bold text-outline uppercase tracking-wider">Clientes Satisfechos</p>
+                        <h3 class="font-headline-md text-3xl font-bold text-slate-gray mb-1">{{ $setting->about_metric_4_value ?? '1k+' }}</h3>
+                        <p class="text-xs font-bold text-outline uppercase tracking-wider">{{ $setting->about_metric_4_label ?? 'Clientes Satisfechos' }}</p>
                     </div>
                 </div>
             </div>
@@ -210,4 +205,65 @@
             </div>
         </div>
     </section>
+
+    <!-- Nuestro Equipo Section -->
+    @if($team->isNotEmpty())
+    <section class="py-20 bg-off-white">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="mb-12">
+                <h2 class="font-headline-lg text-3xl font-bold text-slate-gray mb-2">Nuestro Equipo</h2>
+                <p class="font-body-md text-on-surface-variant">Liderazgo técnico y profesional con visión de futuro.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                @foreach($team as $member)
+                    <div class="bg-white border border-gray overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 rounded">
+                        <div class="w-full h-80 bg-cover bg-center"
+                             style="background-image: url('{{ $member->photo_path ? asset('storage/' . $member->photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($member->name) . '&background=135f99&color=fff&size=512' }}');"
+                             alt="{{ $member->name }}">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-primary font-label-bold text-xs uppercase tracking-wider font-semibold">{{ $member->role }}</span>
+                            <h4 class="font-headline-md text-xl font-bold text-slate-gray mt-1">{{ $member->name }}</h4>
+                            @if($member->description)
+                                <p class="font-body-sm text-sm text-on-surface-variant mt-2 leading-relaxed">{{ $member->description }}</p>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- Empresas Aliadas Section -->
+    @if($partners->isNotEmpty())
+    <section class="py-16 bg-surface border-t border-gray">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <h3 class="font-label-bold text-sm text-center text-on-surface-variant uppercase tracking-widest mb-10 font-semibold">
+                Confían en nosotros & Empresas Aliadas
+            </h3>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-80 hover:opacity-100 transition-opacity duration-300">
+                @foreach($partners as $partner)
+                    @if($partner->link_url)
+                        <a href="{{ $partner->link_url }}" target="_blank" class="grayscale hover:grayscale-0 transition-all duration-500 flex items-center justify-center border border-dashed border-gray p-2 bg-white rounded min-w-[140px] min-h-[60px]">
+                    @else
+                        <div class="grayscale hover:grayscale-0 transition-all duration-500 flex items-center justify-center border border-dashed border-gray p-2 bg-white rounded min-w-[140px] min-h-[60px]">
+                    @endif
+
+                    @if($partner->logo_path)
+                        <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-10 w-auto object-contain max-w-[120px]">
+                    @else
+                        <span class="font-bold text-sm text-slate-gray">{{ $partner->name }}</span>
+                    @endif
+
+                    @if($partner->link_url)
+                        </a>
+                    @else
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
 @endsection

@@ -84,12 +84,12 @@
                                 <h4 class="font-label-bold text-slate-gray uppercase tracking-wider mb-3 text-xs font-bold">Fotografías del Servicio</h4>
                                 <div class="grid grid-cols-2 gap-3">
                                     @foreach($service->gallery as $img)
-                                        <a href="{{ asset('storage/' . $img) }}" target="_blank" class="aspect-[4/3] rounded overflow-hidden border border-border-gray block relative group">
+                                        <button type="button" onclick="openImageModal('{{ asset('storage/' . $img) }}')" class="aspect-[4/3] rounded overflow-hidden border border-border-gray block relative group w-full text-left">
                                             <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                             <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                                 <span class="material-symbols-outlined text-white text-xl">zoom_in</span>
                                             </div>
-                                        </a>
+                                        </button>
                                     @endforeach
                                 </div>
                             </div>
@@ -102,4 +102,59 @@
         @endif
     </div>
 </section>
+
+<!-- Modal for viewing gallery images -->
+<div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4 transition-opacity duration-300 opacity-0" onclick="closeImageModal()">
+    <div class="relative max-w-4xl max-h-[85vh] w-full flex items-center justify-center" onclick="event.stopPropagation()">
+        <!-- Close Button -->
+        <button type="button" class="absolute -top-12 right-0 md:-right-12 text-white hover:text-primary transition-colors flex items-center justify-center p-2" onclick="closeImageModal()">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <!-- Image element -->
+        <img id="modalImage" src="" alt="Vista ampliada" class="max-w-full max-h-[80vh] object-contain rounded border border-white/10 shadow-2xl">
+    </div>
+</div>
+
+<script>
+    function openImageModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        if (!modal || !modalImg) return;
+        
+        modalImg.src = src;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Trigger reflow for transition
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+        }, 10);
+
+        // Prevent body scroll
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        if (!modal) return;
+        
+        modal.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.getElementById('modalImage').src = '';
+        }, 300);
+
+        // Restore body scroll
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeImageModal();
+        }
+    });
+</script>
 @endsection
