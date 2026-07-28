@@ -22,3 +22,6 @@ Route::get('/libro-reclamaciones', [FrontendController::class, 'complaints'])->n
 Route::post('/libro-reclamaciones', [FrontendController::class, 'submitComplaint'])
     ->name('complaints.submit')
     ->middleware('throttle:3,1');
+
+// Privacy Policy page
+Route::view('/politica-privacidad', 'frontend.privacy')->name('privacy');

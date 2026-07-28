@@ -240,7 +240,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <label class="flex items-center gap-3 cursor-pointer">
                     <input class="rounded text-primary focus:ring-primary border-outline-variant w-5 h-5" type="checkbox" required />
-                    <span class="text-xs text-slate-gray">Acepto los <a class="text-primary underline hover:opacity-85" href="#">Términos de Privacidad</a> y el tratamiento de mis datos personales.</span>
+                    <span class="text-xs text-slate-gray">Acepto los <a class="text-primary underline hover:opacity-85" href="{{ route('privacy') }}" target="_blank">Términos de Privacidad</a> y el tratamiento de mis datos personales.</span>
                 </label>
                 <button class="w-full md:w-auto bg-primary text-on-primary px-12 py-4 rounded font-label-bold text-body-md font-bold hover:opacity-95 transition-all shadow-md active:scale-95" type="submit">
                     Enviar Reclamación
