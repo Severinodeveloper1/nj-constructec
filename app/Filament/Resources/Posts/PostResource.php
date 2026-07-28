@@ -26,7 +26,7 @@ class PostResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Artículos';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contenido';
+    protected static string|\UnitEnum|null $navigationGroup = 'Blog';
 
     protected static ?int $navigationSort = 4;
 

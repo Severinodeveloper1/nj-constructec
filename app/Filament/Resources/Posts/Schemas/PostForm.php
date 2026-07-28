@@ -35,7 +35,9 @@ class PostForm
                             ->label('Imagen de Portada')
                             ->image()
                             ->directory('blog')
-                            ->disk('public'),
+                            ->disk('public')
+                            ->maxSize(10240)
+                            ->helperText('Formato: JPG, PNG, WEBP. Tamaño máximo: 10 MB.'),
                         RichEditor::make('content')
                             ->label('Contenido')
                             ->required()

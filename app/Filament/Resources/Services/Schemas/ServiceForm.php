@@ -70,6 +70,9 @@ class ServiceForm
                             ->reorderable()
                             ->directory('services/gallery')
                             ->disk('public')
+                            ->maxFiles(8)
+                            ->maxSize(10240)
+                            ->helperText('Formato: JPG, PNG, WEBP. Tamaño máximo por imagen: 10 MB.')
                             ->columnSpanFull(),
 
                         Repeater::make('attachments')
@@ -83,6 +86,8 @@ class ServiceForm
                                     ->label('Archivo')
                                     ->directory('services/attachments')
                                     ->disk('public')
+                                    ->maxSize(10240)
+                                    ->helperText('Formato: PDF, ZIP. Tamaño máximo: 10 MB.')
                                     ->required(),
                             ])
                             ->columns(2),

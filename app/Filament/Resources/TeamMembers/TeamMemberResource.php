@@ -26,7 +26,7 @@ class TeamMemberResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Miembros del Equipo';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contenido';
+    protected static string|\UnitEnum|null $navigationGroup = 'Compañía';
 
     protected static ?int $navigationSort = 3;
 

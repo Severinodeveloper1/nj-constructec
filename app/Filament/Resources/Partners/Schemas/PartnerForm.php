@@ -29,7 +29,8 @@ class PartnerForm
                             ->image()
                             ->directory('partners')
                             ->disk('public')
-                            ->maxSize(1024)
+                            ->maxSize(10240)
+                            ->helperText('Formato: JPG, PNG, WEBP, SVG. Tamaño máximo: 10 MB.')
                             ->required(),
                         TextInput::make('order')
                             ->label('Orden de Aparición')

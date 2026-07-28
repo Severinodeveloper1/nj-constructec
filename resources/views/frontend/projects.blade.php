@@ -37,9 +37,14 @@
                     <div class="border border-border-gray rounded overflow-hidden hover:border-primary transition-all duration-300 group project-card" data-type="{{ $project->service_type }}">
                         <div class="h-64 bg-slate-200 relative overflow-hidden">
                             @if($project->image_path)
-                                <img src="{{ asset('storage/' . $project->image_path) }}" 
-                                     alt="{{ $project->title }}" 
-                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                <button type="button" onclick="openImageModal('{{ asset('storage/' . $project->image_path) }}')" class="w-full h-full block text-left relative group">
+                                    <img src="{{ asset('storage/' . $project->image_path) }}" 
+                                         alt="{{ $project->title }}" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-white text-3xl">zoom_in</span>
+                                    </div>
+                                </button>
                             @else
                                 <div class="w-full h-full bg-slate-300 flex items-center justify-center">
                                     <span class="material-symbols-outlined text-4xl text-white">image</span>
@@ -60,9 +65,12 @@
                             @if($project->gallery && is_array($project->gallery) && count($project->gallery) > 0)
                                 <div class="grid grid-cols-4 gap-1.5 pt-2">
                                     @foreach($project->gallery as $galleryImg)
-                                        <a href="{{ asset('storage/' . $galleryImg) }}" target="_blank" class="aspect-square rounded overflow-hidden border border-border-gray/50 block">
-                                            <img src="{{ asset('storage/' . $galleryImg) }}" class="w-full h-full object-cover">
-                                        </a>
+                                        <button type="button" onclick="openImageModal('{{ asset('storage/' . $galleryImg) }}')" class="aspect-square rounded overflow-hidden border border-border-gray/50 block relative group text-left w-full">
+                                            <img src="{{ asset('storage/' . $galleryImg) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                            <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white text-xs">zoom_in</span>
+                                            </div>
+                                        </button>
                                     @endforeach
                                 </div>
                             @endif
@@ -81,7 +89,19 @@
     </div>
 </section>
 
-<!-- Client side filtering script -->
+<!-- Modal for viewing gallery images -->
+<div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4 transition-opacity duration-300 opacity-0" onclick="closeImageModal()">
+    <div class="relative max-w-4xl max-h-[85vh] w-full flex items-center justify-center" onclick="event.stopPropagation()">
+        <!-- Close Button -->
+        <button type="button" class="absolute -top-12 right-0 md:-right-12 text-white hover:text-primary transition-colors flex items-center justify-center p-2" onclick="closeImageModal()">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <!-- Image element -->
+        <img id="modalImage" src="" alt="Vista ampliada" class="max-w-full max-h-[80vh] object-contain rounded border border-white/10 shadow-2xl">
+    </div>
+</div>
+
+<!-- Client side filtering and modal scripts -->
 <script>
     function filterProjects(type) {
         const cards = document.querySelectorAll('.project-card');
@@ -103,5 +123,46 @@
             }
         });
     }
+
+    function openImageModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        if (!modal || !modalImg) return;
+        
+        modalImg.src = src;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Trigger reflow for transition
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+        }, 10);
+
+        // Prevent body scroll
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        if (!modal) return;
+        
+        modal.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.getElementById('modalImage').src = '';
+        }, 300);
+
+        // Restore body scroll
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeImageModal();
+        }
+    });
 </script>
 @endsection

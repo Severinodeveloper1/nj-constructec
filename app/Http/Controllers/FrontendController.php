@@ -25,8 +25,12 @@ class FrontendController extends Controller
         $banners = Banner::where('is_active', true)->orderBy('order')->get();
         $services = Service::where('is_active', true)->orderBy('order')->take(4)->get();
         $featuredProjects = Project::where('is_active', true)->where('is_featured', true)->orderBy('order')->take(6)->get();
+        $testimonials = \App\Models\Testimonial::with('service')
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->get();
 
-        return view('welcome', compact('banners', 'services', 'featuredProjects'));
+        return view('welcome', compact('banners', 'services', 'featuredProjects', 'testimonials'));
     }
 
     public function about()

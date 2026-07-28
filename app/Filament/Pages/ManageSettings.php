@@ -22,6 +22,8 @@ class ManageSettings extends Page
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Compañía';
+
     protected static ?string $navigationLabel = 'Configuración';
 
     protected static ?string $title = 'Información de la Empresa';
@@ -62,7 +64,8 @@ class ManageSettings extends Page
                                             ->image()
                                             ->directory('company')
                                             ->disk('public')
-                                            ->maxSize(2048),
+                                            ->maxSize(10240)
+                                            ->helperText('Formato: JPG, PNG, WEBP, SVG. Tamaño máximo: 10 MB.'),
                                     ])->columns(2),
 
                                 Section::make('Contacto')
@@ -119,7 +122,8 @@ class ManageSettings extends Page
                                             ->acceptedFileTypes(['application/pdf'])
                                             ->directory('brochures')
                                             ->disk('public')
-                                            ->maxSize(10240),
+                                            ->maxSize(10240)
+                                            ->helperText('Formato: PDF. Tamaño máximo: 10 MB.'),
                                         TextInput::make('contact_email_receiver')
                                             ->label('Correo Destino de Notificaciones')
                                             ->email()
@@ -166,7 +170,8 @@ class ManageSettings extends Page
                                             ->image()
                                             ->directory('company/banners')
                                             ->disk('public')
-                                            ->maxSize(2048),
+                                            ->maxSize(10240)
+                                            ->helperText('Formato: JPG, PNG, WEBP. Tamaño máximo: 10 MB.'),
                                         TextInput::make('about_banner_badge')
                                             ->label('Etiqueta Pequeña (Badge)')
                                             ->placeholder('Ej: ESTABLECIDOS EN 2006'),

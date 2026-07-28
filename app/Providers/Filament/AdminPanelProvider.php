@@ -44,7 +44,8 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
             ])
             ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                    ->navigationGroup('Seguridad'),
             ])
             ->middleware([
                 EncryptCookies::class,

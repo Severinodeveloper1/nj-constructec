@@ -18,6 +18,14 @@ class ProjectForm
             ->components([
                 Section::make('Detalles del Proyecto')
                     ->schema([
+                        FileUpload::make('image_path')
+                            ->label('Foto Portada / Principal')
+                            ->image()
+                            ->directory('projects')
+                            ->disk('public')
+                            ->maxSize(10240)
+                            ->helperText('Formato: JPG, PNG, WEBP. Tamaño máximo: 10 MB.')
+                            ->required(),
                         TextInput::make('title')
                             ->label('Nombre del Proyecto')
                             ->required()
@@ -51,24 +59,21 @@ class ProjectForm
                             ->label('Activo')
                             ->default(true),
                     ])->columns(2),
-
+ 
                 Section::make('Galería de Imágenes')
                     ->description('Suba las fotografías del trabajo técnico.')
                     ->schema([
-                        FileUpload::make('image_path')
-                            ->label('Foto Portada / Principal')
-                            ->image()
-                            ->directory('projects')
-                            ->disk('public')
-                            ->required(),
                         FileUpload::make('gallery')
                             ->label('Fotos Secundarias (Galería)')
                             ->image()
                             ->multiple()
                             ->reorderable()
+                            ->maxFiles(8)
+                            ->maxSize(10240)
+                            ->helperText("Formatos: JPG, PNG, WEBP. Máximo 8 imágenes de hasta 10 MB cada una.")
                             ->directory('projects/gallery')
                             ->disk('public'),
-                    ])->columns(2),
+                    ])->columns(1),
             ])->columns(1);
     }
 }

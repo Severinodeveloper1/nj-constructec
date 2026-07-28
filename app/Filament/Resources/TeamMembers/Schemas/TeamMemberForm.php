@@ -34,7 +34,8 @@ class TeamMemberForm
                             ->image()
                             ->directory('team')
                             ->disk('public')
-                            ->maxSize(2048),
+                            ->maxSize(10240)
+                            ->helperText('Formato: JPG, PNG, WEBP. Tamaño máximo: 10 MB.'),
                         TextInput::make('order')
                             ->label('Orden de Aparición')
                             ->numeric()

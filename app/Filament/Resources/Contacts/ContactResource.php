@@ -19,6 +19,8 @@ class ContactResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Bandeja de Entrada';
+
     protected static ?string $navigationLabel = 'Contáctenos';
 
     protected static ?string $modelLabel = 'Mensaje de Contacto';

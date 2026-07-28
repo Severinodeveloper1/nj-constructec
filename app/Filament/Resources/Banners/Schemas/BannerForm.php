@@ -29,8 +29,8 @@ class BannerForm
                             ->image()
                             ->directory('banners')
                             ->disk('public')
-                            ->maxSize(2048)
-                            ->helperText('Dimensiones sugeridas: 1920x1080 píxeles (relación de aspecto 16:9). Peso máximo: 2MB.')
+                            ->maxSize(10240)
+                            ->helperText('Dimensiones sugeridas: 1920x1080 px (16:9). Formatos: JPG, PNG, WEBP. Tamaño máximo: 10 MB.')
                             ->required(),
                         TextInput::make('link_url')
                             ->label('Enlace / URL de Botón')

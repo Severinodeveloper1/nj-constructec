@@ -26,7 +26,7 @@ class ProjectResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Proyectos';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Contenido';
+    protected static string|\UnitEnum|null $navigationGroup = 'Servicios y Obras';
 
     protected static ?int $navigationSort = 3;
 

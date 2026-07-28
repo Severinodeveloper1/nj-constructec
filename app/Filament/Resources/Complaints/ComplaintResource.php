@@ -20,6 +20,8 @@ class ComplaintResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBookOpen;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Bandeja de Entrada';
+
     protected static ?string $navigationLabel = 'Libro de Reclamaciones';
 
     protected static ?string $modelLabel = 'Reclamación / Queja';
